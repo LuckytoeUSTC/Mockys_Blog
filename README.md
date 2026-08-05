@@ -1,6 +1,6 @@
 # Mocky's Blog
 
-[Click Me Here!](Https://mocks.net)
+[Click Me Here!](Https://mockys.net)
 
 个人数字花园与博客，基于 [Quartz v5](https://quartz.jzhao.xyz/) 构建并托管于 Cloudflare Pages。
 
