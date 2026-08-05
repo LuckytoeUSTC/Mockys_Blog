@@ -1,16 +1,44 @@
 # Mockys' Nest
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=mockys.net)](https://mockys.net) [![Pages](https://img.shields.io/github/checks-status/LuckytoeUSTC/Mockys_Blog/v5?label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
+[![Site](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=site)](https://mockys.net) [![Latest deploy](https://img.shields.io/github/checks-status/LuckytoeUSTC/Mockys_Blog/v5?label=latest%20deploy)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
 
-Moe 与 Lucky 共同维护的数字花园，记录数学、物理、人文、摄影、播客与仍在生长的问题。网站由 [Quartz v5](https://quartz.jzhao.xyz/) 构建，提交到当前发布分支 `v5` 后，Cloudflare Pages 会自动更新 [mockys.net](https://mockys.net)。
+Moe 与 Lucky 共同维护的数字花园，记录数学、物理、人文、摄影、播客与仍在生长的问题。访问网站：[mockys.net](https://mockys.net)。
 
-## 给合作者：用 GitHub 网页发布Blog
+## 网站如何运行
 
-日常投稿只需要修改 `content/你的名字/`，不区分作者的Blog（或者共同写作的Blog）可以放在 `content/Undetermined`下面。最好不要改动其他作者的目录。
+这是一个没有内容管理后台的静态网站。GitHub 仓库保存文章与配置，是网站内容的唯一来源；Cloudflare Pages 监听发布分支，每次收到新提交后运行 Quartz，把 Markdown 编译成网页并自动上线。
 
-### 1. 准备文章
+```mermaid
+flowchart LR
+    A["作者<br/>Markdown 与普通附件"] -->|"GitHub 网页端<br/>Upload files"| B["GitHub<br/>content/作者目录/"]
+    B -->|"提交到 v5"| C["Cloudflare Pages<br/>运行 Quartz v5 构建"]
+    C --> D["mockys.net<br/>公开网站"]
+    E["大文件<br/>无法压缩到 25 MiB 以下"] -->|"交给 Lucky"| F["Cloudflare R2"]
+    F -->|"assets.mockys.net 外链"| D
+```
 
-建议把文件命名为简短的英文小写名称，单词之间使用连字符，例如 `notes-on-light.md`。文章开头可以复制下面的模板：
+- **内容**：博文和普通附件位于 `content/`，按作者归档。
+- **发布**：`v5` 是当前默认及生产分支；直接提交后，Cloudflare Pages 自动构建和部署。
+- **普通附件**：与文章一起提交到作者目录下的 `assets/`，由 GitHub 跟踪并随 Pages 发布。
+- **大文件**：先压缩；仍然过大时交给 Lucky 上传 R2，文章只保存 `assets.mockys.net` 外链。
+
+顶部的两个状态徽章含义不同：`site` 只检测网站当前是否能够访问；`latest deploy` 读取最新提交的 GitHub Checks，其中的 `Cloudflare Pages` 检查由 [Cloudflare Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#check-runs)写回 GitHub，反映最新构建是否完成。详细构建日志仍以 Cloudflare Dashboard 为准。
+
+## 给合作者：用 GitHub 网页上传博文
+
+### 1. 确认文件放在哪里
+
+- Moe 的文章放入 [`content/Moe/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Moe)。
+- Lucky 的文章放入 [`content/Lucky/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Lucky)。
+- 共同写作、暂不区分作者或尚未归档的文章放入 [`content/Undetermined/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Undetermined)。
+
+`.gitkeep` 只是用于让 Git 保留空文件夹，不需要打开或修改。日常投稿只改自己的作者目录；不要移动其他作者的文章，也不要改动 `quartz/`、`.github/` 或网站配置文件。
+
+### 2. 准备 Markdown 文件
+
+在本地用 Obsidian 或其他编辑器写好 `.md` 文件。建议使用简短的英文小写文件名，单词之间用连字符连接，例如 `notes-on-light.md`。
+
+文章开头保留以下 Frontmatter；已有内容时不需要在 GitHub 网页里重新复制正文：
 
 ```md
 ---
@@ -21,29 +49,24 @@ tags:
   - 标签一
   - 标签二
 ---
-
-从这里开始写正文。
 ```
 
-- `title` 是网页上显示的标题。
-- `description` 用于搜索结果和链接预览
-- `date` 使用 `YYYY-MM-DD` 格式。
-- 每个标签单独写一行；不需要标签时可以删掉整个 `tags` 部分。
+`title` 是网页标题，`description` 用于搜索结果和链接预览，`date` 使用 `YYYY-MM-DD` 格式。每个标签单独占一行；不需要标签时可以删掉整个 `tags` 部分。
 
-### 2. 在网页端新建文章
+### 3. 直接上传并发布
 
-1. 打开 [GitHub 仓库](https://github.com/LuckytoeUSTC/Mockys_Blog)，确认左上方分支是 `v5`（默认）。
-2. 点击 **Add file → Create new file**。
-3. 在文件名中填写完整路径，例如 `content/Moe/notes-on-light.md`。
-4. 粘贴上面的模板和正文，切换到 **Preview** 检查标题、列表、链接与图片语法。
-5. 点击 **Commit changes**，提交说明写清文章名称，例如 `post: add notes on light`。
-6. 选择直接提交到 `v5`，再次点击 **Commit changes**。通常等待几分钟后即可在 [mockys.net](https://mockys.net) 查看结果。
+1. 打开上方对应的作者目录，确认左上方分支为 `v5`。
+2. 点击 **Add file → Upload files**。
+3. 把写好的 `.md` 文件拖入上传区域；文章有图片时，同时拖入准备好的 `assets` 文件夹。
+4. 检查页面列出的目标路径，确认所有文件都位于 `content/自己的名字/`。
+5. 在 **Commit changes** 中填写简短说明，例如 `post: add notes on light`。
+6. 选择直接提交到 `v5`，点击 **Commit changes**。通常等待几分钟后即可在 [mockys.net](https://mockys.net) 查看结果。
 
-修改已有文章也很简单：打开对应的 `.md` 文件，点击右上角铅笔图标，编辑后再次提交。
+需要修改已有文章时，打开对应 `.md` 文件并点击右上角铅笔图标；也可以在本地修改后重新上传同名文件。
 
-### 3. 添加图片和附件
+### 4. 图片与附件
 
-普通图片或附件放在自己目录下的 `assets/` 文件夹，并随文章一起提交。例如：
+普通图片或附件放在作者目录下的 `assets/` 文件夹。例如：
 
 ```text
 content/
@@ -59,8 +82,6 @@ content/
 ![棱镜实验](./assets/prism.jpg)
 ```
 
-上传附件时，进入自己的作者目录，点击 **Add file → Upload files**；可以拖入单个文件，也可以拖入准备好的 `assets` 文件夹。提交前请再次确认目标路径位于 `content/你的名字/`。
-
 > [!IMPORTANT]
 > **单个附件必须小于 25 MiB，并且不要卡着上限。** GitHub 网页上传和 Cloudflare Pages 的单个站点资源都以 25 MiB 为上限。图片、音频或视频请先压缩；如果无法压到限制以内，请把原文件交给 Lucky，由 Lucky 上传到 R2，再把 `https://assets.mockys.net/...` 链接发给你。不要自行配置 R2，也不要把访问密钥写进仓库。
 
@@ -72,24 +93,17 @@ content/
 ![图片说明](https://assets.mockys.net/路径/图片.jpg)
 ```
 
-### 4. 发布前检查
-
-- 文件位于 `content/自己的名字/`，没有误改其他目录。
-- 标题、日期和标签格式正确，正文中没有账号、密码、密钥或不应公开的信息。
-- 本地图片链接使用 `./assets/文件名`，并且附件已经一同上传。
-- 每个附件都小于 25 MiB；更大的文件已经交给 Lucky 处理。
-- 提交后等待构建完成，再检查网页；若失败，请把提交链接或页面截图发给 Lucky，不要连续重复提交。
-
 ## 项目结构
 
 ```text
-content/                 博文与普通附件；合作者日常只需进入这里
-├── Lucky/               Lucky 的内容
-├── Moe/                 Moe 的内容
-└── index.md             网站首页
-quartz/                  Quartz 程序代码
-quartz.config.default.yaml
-README.md                本说明与简要状态入口
+content/                         博文与普通附件
+├── Lucky/                       Lucky 的内容
+├── Moe/                         Moe 的内容；.gitkeep 用于保留空目录
+├── Undetermined/                共同写作或尚未归档的内容
+└── index.md                     网站首页
+quartz/                          Quartz 程序代码
+quartz.config.default.yaml       网站配置
+README.md                        架构、投稿说明与状态入口
 ```
 
 ## 文件大小依据
@@ -102,7 +116,7 @@ README.md                本说明与简要状态入口
 
 - [Cloudflare Dashboard](https://dash.cloudflare.com/)
 - [Google Search Console](https://search.google.com/search-console)
-- [百度搜索资源平台](https://ziyuan.baidu.com/)
+- [百度搜索资源平台](https://ziyuan.baidu.com/dashboard/index?site=https://www.mockys.net/)
 - [Quartz 文档](https://quartz.jzhao.xyz/)
 
 </details>
