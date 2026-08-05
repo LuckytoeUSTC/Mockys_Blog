@@ -47,10 +47,11 @@ $$
     </div>
     <a href="https://www.xiaoyuzhoufm.com/episode/6a71d6afab3a91c24a0fb8c4" target="_blank" rel="noopener noreferrer" style="font-size: 0.85em; background: #ea580c; color: white; padding: 0.4rem 0.8rem; border-radius: 6px; text-decoration: none; white-space: nowrap;">去小宇宙收听 ↗</a>
   </div>
-  <audio controls style="width: 100%; height: 40px; margin-top: 0.5rem;" src="https://pub-d40d0a7f6fd742bda40c5faf18aea40e.r2.dev/test/360-%E8%B4%9D%E5%A4%9A%E8%8A%AC%E6%98%AF%E6%AD%8C%E9%A2%82%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD%E7%9A%84%E9%9F%B3%E4%B9%90%E5%AE%B6%E5%90%97%EF%BC%9F.m4a">
+  <audio controls style="width: 100%; height: 40px; margin-top: 0.5rem;" src="https://assets.mockys.net/test/360-%E8%B4%9D%E5%A4%9A%E8%8A%AC%E6%98%AF%E6%AD%8C%E9%A2%82%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD%E7%9A%84%E9%9F%B3%E4%B9%90%E5%AE%B6%E5%90%97%EF%BC%9F.m4a">
     您的浏览器不支持 HTML5 音频播放。
   </audio>
 </div>
+
 
 
 ---
