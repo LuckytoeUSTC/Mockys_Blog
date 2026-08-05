@@ -41,7 +41,6 @@ export default (() => {
 
     return (
       <head>
-        // For Buidu verification
         <meta name="baidu-site-verification" content="codeva-aiuaLYUSn0" />
       
         <title>{title}</title>
