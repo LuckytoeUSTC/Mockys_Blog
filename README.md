@@ -1,6 +1,6 @@
 # Mockys' Nest
 
-[![Site](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=site)](https://mockys.net) [![Latest deploy](https://img.shields.io/github/checks-status/LuckytoeUSTC/Mockys_Blog/v5?label=latest%20deploy)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
+[![Site](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=site)](https://mockys.net) [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
 
 Moe 与 Lucky 共同维护的数字花园，记录数学、物理、人文、摄影、播客与仍在生长的问题。访问网站：[mockys.net](https://mockys.net)。
 
@@ -22,7 +22,7 @@ flowchart LR
 - **普通附件**：与文章一起提交到作者目录下的 `assets/`，由 GitHub 跟踪并随 Pages 发布。
 - **大文件**：先压缩；仍然过大时交给 Lucky 上传 R2，文章只保存 `assets.mockys.net` 外链。
 
-顶部的两个状态徽章含义不同：`site` 只检测网站当前是否能够访问；`latest deploy` 读取最新提交的 GitHub Checks，其中的 `Cloudflare Pages` 检查由 [Cloudflare Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#check-runs)写回 GitHub，反映最新构建是否完成。详细构建日志仍以 Cloudflare Dashboard 为准。
+顶部的状态徽章各自回答一个问题：`site` 检测网站此刻能否访问；`Pages` 只读取最新提交中名为 `Cloudflare Pages` 的 Check Run，判断最新构建是否成功；`last commit` 显示远端 `v5` 最近一次提交的时间。Cloudflare Pages 负责构建，并通过 [Cloudflare Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#check-runs)把结果写回 GitHub；Shields 再把这条结果绘制成徽章。详细构建日志仍以 Cloudflare Dashboard 为准。
 
 ## 给合作者：用 GitHub 网页上传博文
 
@@ -36,9 +36,9 @@ flowchart LR
 
 ### 2. 准备 Markdown 文件
 
-在本地用 Typora 或其他编辑器写好 `.md` 文件。建议使用简短的英文小写文件名，单词之间用连字符连接，例如 `notes-on-light.md`。
+在本地用 Typora 或其他编辑器写好 `.md` 文件。建议使用英文文件名，单词之间不要空格，例如 `notes-on-light.md`。
 
-文章开头保留以下 Frontmatter；已有内容时不需要在 GitHub 网页里重新复制正文：
+文章开头保留以下 Frontmatter：
 
 ```md
 ---
@@ -55,9 +55,9 @@ tags:
 
 ### 3. 直接上传并发布
 
-1. 打开上方对应的作者目录，确认左上方分支为 `v5`。
+1. 打开上方对应的作者目录，确认左上方分支为 `v5`（默认）。
 2. 点击 **Add file → Upload files**。
-3. 把写好的 `.md` 文件拖入上传区域；文章有图片时，同时拖入准备好的 `assets` 文件夹。
+3. 把写好的 `.md` 文件拖入上传区域；文章有图片或其它附件时，把附件拖入准备好的 `assets` 文件夹。
 4. 检查页面列出的目标路径，确认所有文件都位于 `content/自己的名字/`。
 5. 在 **Commit changes** 中填写简短说明，例如 `post: add notes on light`。
 6. 选择直接提交到 `v5`，点击 **Commit changes**。通常等待几分钟后即可在 [mockys.net](https://mockys.net) 查看结果。
@@ -112,11 +112,11 @@ README.md                        架构、投稿说明与状态入口
 - [Cloudflare Pages：单个站点资源上限为 25 MiB，较大文件建议使用 R2](https://developers.cloudflare.com/pages/platform/limits/#file-size)
 
 <details>
-<summary>维护者入口</summary>
-
-- [Cloudflare Dashboard](https://dash.cloudflare.com/)
-- [Google Search Console](https://search.google.com/search-console)
-- [百度搜索资源平台](https://ziyuan.baidu.com/dashboard/index?site=https://www.mockys.net/)
-- [Quartz 文档](https://quartz.jzhao.xyz/)
-
+<summary>Developer入口</summary>
+<ul>
+<li><a href="https://dash.cloudflare.com/">Cloudflare Dashboard</a></li>
+<li><a href="https://search.google.com/search-console">Google Search Console</a></li>
+<li><a href="https://ziyuan.baidu.com/dashboard/index?site=https://www.mockys.net/">百度搜索资源平台</a></li>
+<li><a href="https://quartz.jzhao.xyz/">Quartz 文档</a></li>
+</ul>
 </details>
