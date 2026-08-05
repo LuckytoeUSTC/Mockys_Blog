@@ -6,14 +6,14 @@ Moe 与 Lucky 共同维护的数字花园，记录数学、物理、人文、摄
 
 ## 网站如何运行
 
-这是一个没有内容管理后台的静态网站。GitHub 仓库保存文章与配置，是网站内容的唯一来源；Cloudflare Pages 监听发布分支，每次收到新提交后运行 Quartz，把 Markdown 编译成网页并自动上线。
+这是一个没有“内容管理后台”的静态网站。GitHub 仓库保存文章与配置，是网站内容的唯一来源；Cloudflare Pages 监听发布分支，每次收到新提交后运行 Quartz，把 Markdown 编译成网页并自动上线。
 
 ```mermaid
 flowchart LR
     A["作者<br/>Markdown 与普通附件"] -->|"GitHub 网页端<br/>Upload files"| B["GitHub<br/>content/作者目录/"]
     B -->|"提交到 v5"| C["Cloudflare Pages<br/>运行 Quartz v5 构建"]
     C --> D["mockys.net<br/>公开网站"]
-    E["大文件<br/>无法压缩到 25 MiB 以下"] -->|"交给 Lucky"| F["Cloudflare R2"]
+    E["大文件<br/>无法压缩到 25 MiB 以下"] -->|"上传到图床"| F["Cloudflare R2"]
     F -->|"assets.mockys.net 外链"| D
 ```
 
@@ -32,11 +32,11 @@ flowchart LR
 - Lucky 的文章放入 [`content/Lucky/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Lucky)。
 - 共同写作、暂不区分作者或尚未归档的文章放入 [`content/Undetermined/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Undetermined)。
 
-`.gitkeep` 只是用于让 Git 保留空文件夹，不需要打开或修改。日常投稿只改自己的作者目录；不要移动其他作者的文章，也不要改动 `quartz/`、`.github/` 或网站配置文件。
+日常投稿只改自己的作者目录，不要移动其他作者的文章。
 
 ### 2. 准备 Markdown 文件
 
-在本地用 Obsidian 或其他编辑器写好 `.md` 文件。建议使用简短的英文小写文件名，单词之间用连字符连接，例如 `notes-on-light.md`。
+在本地用 Typora 或其他编辑器写好 `.md` 文件。建议使用简短的英文小写文件名，单词之间用连字符连接，例如 `notes-on-light.md`。
 
 文章开头保留以下 Frontmatter；已有内容时不需要在 GitHub 网页里重新复制正文：
 
@@ -83,7 +83,7 @@ content/
 ```
 
 > [!IMPORTANT]
-> **单个附件必须小于 25 MiB，并且不要卡着上限。** GitHub 网页上传和 Cloudflare Pages 的单个站点资源都以 25 MiB 为上限。图片、音频或视频请先压缩；如果无法压到限制以内，请把原文件交给 Lucky，由 Lucky 上传到 R2，再把 `https://assets.mockys.net/...` 链接发给你。不要自行配置 R2，也不要把访问密钥写进仓库。
+> **单个附件必须小于 25 MiB，并且不要卡着上限。** GitHub 网页上传和 Cloudflare Pages 的单个站点资源都以 25 MiB 为上限。图片、音频或视频请先压缩；如果无法压到限制以内，请把原文件交给 Lucky，由 Lucky 上传到 R2，再把 `https://assets.mockys.net/...` 链接发给你。
 
 大文件外链的写法：
 
