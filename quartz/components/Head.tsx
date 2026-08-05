@@ -41,8 +41,6 @@ export default (() => {
 
     return (
       <head>
-        <meta name="baidu-site-verification" content="codeva-aiuaLYUSn0" />
-      
         <title>{title}</title>
         <meta charSet="utf-8" />
         {coreStylesheet && <link rel="preload" href={coreStylesheet} as="style" />}

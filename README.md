@@ -102,9 +102,15 @@ content/                         博文与普通附件
 ├── Undetermined/                共同写作或尚未归档的内容
 └── index.md                     网站首页
 quartz/                          Quartz 程序代码
-quartz.config.default.yaml       网站配置
+quartz.config.yaml               Mockys' Nest 的站点配置
+quartz.config.default.yaml       Quartz 上游默认配置，不存放本站定制
+quartz/styles/custom.scss        全站色彩与排版定制
+siteMetadata.tsx                 百度站点验证等站点级 metadata
+site-plugins/reader-preferences/ Aa 阅读样式控件
 README.md                        架构、投稿说明与状态入口
 ```
+
+站点定制集中在以上文件中，除必要的 `custom.scss` 外，不直接修改 Quartz 框架源码。当前提供浅色/深色主题、专注阅读模式，以及字体和字号设置；中英双语内容与语言切换作为后期计划，待实际出现成对译文后再实施。
 
 ## 文件大小依据
 

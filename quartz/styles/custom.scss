@@ -1,3 +1,144 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+:root {
+  --mockys-sans:
+    system-ui, "Segoe UI", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+  --mockys-serif: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+  --mockys-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --mockys-reader-font: var(--mockys-sans);
+  --mockys-reader-size: 1.02rem;
+  --mockys-reader-leading: 1.82;
+
+  --headerFont: var(--mockys-sans);
+  --bodyFont: var(--mockys-sans);
+  --codeFont: var(--mockys-mono);
+}
+
+:root[data-reader-font="serif"] {
+  --mockys-reader-font: var(--mockys-serif);
+}
+
+:root[data-reader-size="small"] {
+  --mockys-reader-size: 0.96rem;
+  --mockys-reader-leading: 1.76;
+}
+
+:root[data-reader-size="large"] {
+  --mockys-reader-size: 1.1rem;
+  --mockys-reader-leading: 1.9;
+}
+
+body {
+  letter-spacing: 0.006em;
+}
+
+.page-title a {
+  color: var(--dark);
+  letter-spacing: -0.025em;
+}
+
+.center > article {
+  max-width: 48rem;
+  margin-inline: auto;
+  font-family: var(--mockys-reader-font);
+  font-size: var(--mockys-reader-size);
+}
+
+.center > article :where(p, li, blockquote) {
+  line-height: var(--mockys-reader-leading);
+}
+
+.center > article :where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--mockys-sans);
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+.center > article h2 {
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--lightgray);
+}
+
+.center > article blockquote {
+  margin-block: 1.4rem;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+}
+
+.center > article img {
+  border: 1px solid var(--lightgray);
+  border-radius: 0.45rem;
+}
+
+.center > article code {
+  border: 1px solid color-mix(in srgb, var(--gray) 35%, transparent);
+}
+
+a.internal {
+  border-radius: 0.28rem;
+}
+
+.sidebar {
+  font-size: 0.95rem;
+}
+
+.sidebar.right > * {
+  border-color: var(--lightgray);
+}
+
+footer {
+  color: var(--gray);
+  font-size: 0.88rem;
+}
+
+body[data-slug="index"] .right.sidebar {
+  display: none;
+}
+
+body[data-slug="index"] .center > article {
+  max-width: 52rem;
+}
+
+body[data-slug="index"] .article-title {
+  margin-top: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.045em;
+}
+
+body[data-slug="index"] .center > article > blockquote:first-of-type {
+  margin-top: 0.25rem;
+  color: var(--secondary);
+  font-family: var(--mockys-sans);
+  font-size: 1.03em;
+}
+
+body[data-slug="index"] .center > article > p:nth-of-type(3) code {
+  display: inline-block;
+  padding: 0.18rem 0.45rem;
+  border-color: var(--gray);
+  background: transparent;
+  color: var(--secondary);
+}
+
+@media all and (min-width: 1200px) {
+  body[data-slug="index"] .page {
+    max-width: 1240px;
+  }
+
+  body[data-slug="index"] .page > #quartz-body {
+    grid-template-columns: 320px minmax(0, 1fr);
+    grid-template-areas:
+      "grid-sidebar-left grid-header"
+      "grid-sidebar-left grid-center"
+      "grid-sidebar-left grid-footer";
+  }
+}
+
+@media all and (max-width: 800px) {
+  .center > article {
+    font-size: min(var(--mockys-reader-size), 1.06rem);
+  }
+
+  body[data-slug="index"] .article-title {
+    font-size: 2.15rem;
+  }
+}

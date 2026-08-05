@@ -19,7 +19,8 @@
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
-    "prebuild": "npm run install-plugins"
+    "build-site-plugins": "esbuild site-plugins/reader-preferences/src/index.ts site-plugins/reader-preferences/src/components.tsx --outdir=site-plugins/reader-preferences/dist --format=esm --platform=node --jsx=automatic",
+    "prebuild": "npm run build-site-plugins && npm run install-plugins"
   },
   "engines": {
     "npm": ">=10.9.2",
@@ -37,6 +38,7 @@
     "quartz": "./quartz/bootstrap-cli.mjs"
   },
   "dependencies": {
+    "@mockys/reader-preferences": "file:site-plugins/reader-preferences",
     "@clack/prompts": "^1.7.0",
     "@floating-ui/dom": "^1.7.4",
     "@myriaddreamin/rehype-typst": "^0.7.0",
@@ -129,6 +131,6 @@
     "esbuild": "^0.28.1",
     "prettier": "^3.8.1",
     "tsx": "^4.21.0",
-    "typescript": "^7.0.2"
+    "typescript": "^5.9.3"
   }
 }

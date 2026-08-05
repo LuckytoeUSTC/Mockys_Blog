@@ -1,0 +1,32 @@
+{
+  "name": "@mockys/reader-preferences",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components": "./dist/components.js",
+    "./package.json": "./package.json"
+  },
+  "quartz": {
+    "name": "reader-preferences",
+    "displayName": "Reader Preferences",
+    "description": "A compact, persistent typography control for Mockys' Nest.",
+    "version": "1.0.0",
+    "category": [
+      "component"
+    ],
+    "components": {
+      "ReaderPreferences": {
+        "name": "ReaderPreferences",
+        "displayName": "Reader Preferences",
+        "description": "Allows readers to choose typeface and text size.",
+        "version": "1.0.0",
+        "defaultPosition": "left",
+        "defaultPriority": 38
+      }
+    }
+  }
+}

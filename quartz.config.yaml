@@ -1,45 +1,47 @@
 # yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+# Mockys' Nest 的站点级配置。上游默认值保留在 quartz.config.default.yaml。
 configuration:
-  pageTitle: Quartz 5
+  pageTitle: Mockys' Nest
   pageTitleSuffix: ""
   enableSPA: true
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
-  baseUrl: "quartz.jzhao.xyz"
+  locale: zh-CN
+  baseUrl: mockys.net
   ignorePatterns:
     - private
     - templates
     - .obsidian
   theme:
-    fontOrigin: googleFonts
-    cdnCaching: true
+    # 使用本机字体栈，避免国内访问时依赖 Google Fonts。
+    fontOrigin: local
+    cdnCaching: false
     typography:
-      header: Schibsted Grotesk
-      body: Source Sans Pro
-      code: IBM Plex Mono
+      header: system-ui
+      body: system-ui
+      code: ui-monospace
     colors:
       lightMode:
-        light: "#faf8f8"
-        lightgray: "#e5e5e5"
-        gray: "#b8b8b8"
-        darkgray: "#4e4e4e"
-        dark: "#2b2b2b"
-        secondary: "#284b63"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#fff23688"
+        light: "#f7f4ec"
+        lightgray: "#e9e3d6"
+        gray: "#9b9385"
+        darkgray: "#3f4343"
+        dark: "#20292b"
+        secondary: "#315f6f"
+        tertiary: "#866744"
+        highlight: rgba(49, 95, 111, 0.12)
+        textHighlight: "#e4c96f80"
       darkMode:
-        light: "#161618"
-        lightgray: "#393639"
-        gray: "#646464"
-        darkgray: "#d4d4d4"
-        dark: "#ebebec"
-        secondary: "#7b97aa"
-        tertiary: "#84a59d"
-        highlight: rgba(143, 159, 169, 0.15)
-        textHighlight: "#b3aa0288"
+        light: "#111517"
+        lightgray: "#23292c"
+        gray: "#6f7c81"
+        darkgray: "#ccd4d6"
+        dark: "#f3f1ea"
+        secondary: "#8db6c4"
+        tertiary: "#d0a878"
+        highlight: rgba(141, 182, 196, 0.13)
+        textHighlight: "#a98c3f73"
 plugins:
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -73,6 +75,7 @@ plugins:
     layout:
       position: right
       priority: 30
+      condition: not-index
   - source: "@quartz-community/crawl-links"
     enabled: true
     options:
@@ -99,7 +102,7 @@ plugins:
     enabled: false
     order: 92
   - source: "@quartz-community/quartz-fonts"
-    enabled: true
+    enabled: false
   - source: "@quartz-themes/core"
     enabled: false
     options:
@@ -119,7 +122,7 @@ plugins:
   - source: "@quartz-community/favicon"
     enabled: true
   - source: "@quartz-community/og-image"
-    enabled: true
+    enabled: false
   - source: "@quartz-community/cname"
     enabled: true
   - source: "@quartz-community/canvas-page"
@@ -140,6 +143,7 @@ plugins:
     layout:
       position: right
       priority: 10
+      condition: not-index
   - source: "@quartz-community/search"
     enabled: true
     layout:
@@ -153,6 +157,7 @@ plugins:
     layout:
       position: right
       priority: 50
+      condition: not-index
   - source: "@quartz-community/article-title"
     enabled: true
     layout:
@@ -163,11 +168,13 @@ plugins:
     layout:
       position: beforeBody
       priority: 20
+      condition: not-index
   - source: "@quartz-community/tag-list"
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
       priority: 30
+      condition: has-tags
   - source: "@quartz-community/page-title"
     enabled: true
     layout:
@@ -184,6 +191,12 @@ plugins:
     layout:
       position: left
       priority: 35
+      group: toolbar
+  - source: "@mockys/reader-preferences"
+    enabled: true
+    layout:
+      position: left
+      priority: 38
       group: toolbar
   - source: "@quartz-community/breadcrumbs"
     enabled: true
@@ -203,8 +216,8 @@ plugins:
     enabled: true
     options:
       links:
-        GitHub: https://github.com/jackyzha0/quartz
-        Discord Community: https://discord.gg/cRFFHYye7t
+        GitHub: https://github.com/LuckytoeUSTC/Mockys_Blog
+        RSS: https://mockys.net/index.xml
     layout:
       position: footer
       priority: 50
@@ -231,14 +244,10 @@ plugins:
         - tags
         - aliases
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: ---
       language: yaml
     order: 5
-    layout:
-      position: beforeBody
-      priority: 15
-      display: all
   - source: "@quartz-community/unlisted-pages"
     enabled: true
     options: {}
