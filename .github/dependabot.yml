@@ -1,20 +1,12 @@
 version: 2
+
+# Routine dependency upgrade PRs are intentionally disabled. Dependency changes
+# must be reviewed and tested individually against Quartz before they are accepted.
+# Dependabot alerts and security updates remain controlled by the repository's
+# GitHub security settings.
 updates:
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
-    groups:
-      production-dependencies:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    groups:
-      ci-dependencies:
-        applies-to: "version-updates"
-        patterns:
-          - "*"
+    open-pull-requests-limit: 0
