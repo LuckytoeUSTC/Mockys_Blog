@@ -56,13 +56,27 @@ tags:
 ### 3. 直接上传并发布
 
 1. 打开上方对应的作者目录，确认左上方分支为 `v5`（默认）。
-2. 点击 **Add file → Upload files**。
-3. 把写好的 `.md` 文件拖入上传区域；文章有图片或其它附件时，把附件拖入准备好的 `assets` 文件夹。
-4. 检查页面列出的目标路径，确认所有文件都位于 `content/自己的名字/`。
-5. 在 **Commit changes** 中填写简短说明，例如 `post: add notes on light`。
-6. 选择直接提交到 `v5`，点击 **Commit changes**。通常等待几分钟后即可在 [mockys.net](https://mockys.net) 查看结果。
 
-需要修改已有文章时，打开对应 `.md` 文件并点击右上角铅笔图标；也可以在本地修改后重新上传同名文件。
+2. 点击 **Add file → Upload files**。
+
+3. 把写好的 `.md` 文件拖入上传区域；文章有图片或其它附件时，把附件拖入准备好的 `assets` 文件夹。
+
+4. 检查页面列出的目标路径，确认所有文件都位于 `content/自己的名字/`。
+
+5. 在 **Commit changes** 中填写简短说明，例如 `post: add notes on light`。
+
+6. 选择直接提交到 `v5`，点击 **Commit changes**。
+
+7. 提交完成后，等待网页自动编译，通常几秒钟到一分钟，即可在 [mockys.net](https://mockys.net) 查看结果。也可以根据这个标签查看编译状况 >> ![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)<<
+
+   | 标签          | 编译状态 | 你的反应          |
+   | ------------- | -------- | ----------------- |
+   | pending       | 正在编译 | 耐心等待          |
+   | passing       | 编译成功 | Hurrah!!          |
+   | no check runs | 状态未知 | 耐心等待失败      |
+   | failing       | 彻底失败 | 是时候呼叫Lucky啦 |
+
+8. 需要修改已有文章时，打开对应 `.md` 文件并点击右上角铅笔图标；也可以在本地修改后重新上传同名文件。
 
 ### 4. 图片与附件
 
