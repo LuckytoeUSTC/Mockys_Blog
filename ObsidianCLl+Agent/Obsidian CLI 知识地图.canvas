@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"a18e3b490f6c2d71","type":"text","text":"# Obsidian CLI\n\n从终端控制运行中的 Obsidian，用于自动化、知识管理与开发调试。","x":0,"y":0,"width":420,"height":180,"color":"5"},
+		{"id":"b29f4c5a107d3e82","type":"file","file":"ObsidianCLl+Agent/Obsidian CLI 官方帮助（原文）.md","x":-560,"y":-260,"width":420,"height":300},
+		{"id":"c3a05d6b218e4f93","type":"file","file":"ObsidianCLl+Agent/Obsidian CLI 阅读笔记.md","x":-560,"y":120,"width":420,"height":320},
+		{"id":"e5c27f8d43a061b5","type":"text","text":"## 基础调用\n\n- vault= 选择仓库\n- command 指定动作\n- parameter=value 传参\n- flag 启用布尔选项\n- 自动化优先 path=","x":520,"y":-300,"width":400,"height":250,"color":"4"},
+		{"id":"f6d3809e54b172c6","type":"text","text":"## 主要能力\n\n- 文件与搜索\n- 链接、标签、属性、任务\n- 日记与模板\n- 同步与发布\n- 插件、主题、工作区","x":520,"y":20,"width":400,"height":300,"color":"3"},
+		{"id":"07e491af65c283d7","type":"text","text":"## 开发者闭环\n\n修改代码 → plugin:reload → dev:errors → DOM / 截图验证 → 继续迭代","x":520,"y":390,"width":400,"height":250,"color":"6"},
+		{"id":"18f5a2b076d394e8","type":"text","text":"## 使用前提与风险\n\n- Obsidian 需运行\n- Windows 安装程序需 1.12.7+\n- PATH 注册后重启终端\n- 避免歧义的 file=\n- 谨慎使用 eval 与永久删除","x":0,"y":400,"width":420,"height":240,"color":"1"},
+		{"id":"d4b16e7c329f50a4","type":"link","url":"https://obsidian.md/zh/help/cli","x":0,"y":-335,"width":420,"height":160}
+	],
+	"edges":[
+		{"id":"291a6b3c87e405f9","fromNode":"d4b16e7c329f50a4","fromSide":"bottom","toNode":"a18e3b490f6c2d71","toSide":"top","label":"官方来源"},
+		{"id":"3a2b7c4d98f5160a","fromNode":"b29f4c5a107d3e82","fromSide":"right","toNode":"a18e3b490f6c2d71","toSide":"left","label":"原文"},
+		{"id":"4b3c8d5ea906271b","fromNode":"c3a05d6b218e4f93","fromSide":"right","toNode":"a18e3b490f6c2d71","toSide":"left","label":"提炼"},
+		{"id":"5c4d9e6fba17382c","fromNode":"a18e3b490f6c2d71","fromSide":"right","toNode":"e5c27f8d43a061b5","toSide":"left","label":"如何调用"},
+		{"id":"6d5e0f70cb28493d","fromNode":"a18e3b490f6c2d71","fromSide":"right","toNode":"f6d3809e54b172c6","toSide":"left","label":"能做什么"},
+		{"id":"7e6f1081dc395a4e","fromNode":"f6d3809e54b172c6","fromSide":"bottom","toNode":"07e491af65c283d7","toSide":"top","label":"开发扩展"},
+		{"id":"8f701192ed4a6b5f","fromNode":"a18e3b490f6c2d71","fromSide":"bottom","toNode":"18f5a2b076d394e8","toSide":"top","label":"边界条件"}
+	]
+}
