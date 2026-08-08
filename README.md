@@ -67,7 +67,7 @@ tags:
 
 6. 选择直接提交到 `v5`，点击 **Commit changes**。
 
-7. 提交完成后，等待网页自动编译，通常几秒钟到一分钟，即可在 [mockys.net](https://mockys.net) 查看结果。也可以根据这个标签查看编译状况 >> ![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)<<
+7. 提交完成后，等待网页自动编译，通常几秒钟到一分钟，即可在 [mockys.net](https://mockys.net) 查看结果。也可以根据这个标签查看编译状况 >> ![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)<<（这个标签不会自动更新，要刷新页面才能获取最新结果)
 
    | 标签          | 编译状态 | 你的反应          |
    | ------------- | -------- | ----------------- |

@@ -1,9 +1,7 @@
 ---
 title: Mockys' Nest
-description: Moe 与 Lucky 共同维护的数字花园，记录数学、物理、人文、摄影与声音。
+description: Moe 与 Lucky 共同维护的Digital Garden
 ---
-
-> 在推导与漫游之间，保存那些值得反复回到的问题。
 
 这里是 **Moe 与 Lucky** 共同维护的数字花园。我们写数学与物理，也写阅读、哲学、摄影、播客，以及尚未长成定论的想法。
 
