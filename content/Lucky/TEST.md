@@ -4,6 +4,8 @@ author: Lucky
 date: 2026-08-05
 language: zh-CN
 description: A test blog
+aliases:
+  - lucky/test/index
 tags:
   - AI生成
   - 物理
@@ -71,6 +73,6 @@ $$
 
 以下是图片示例：
 
-![星空](./assets/1E63685F256BD04F18BFA98E961F30B4.png)
+![星空](./TEST/assets/1E63685F256BD04F18BFA98E961F30B4.png)
 
-*图：思想与空间的交汇处
+*图：思想与空间的交汇处*

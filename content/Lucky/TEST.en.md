@@ -5,6 +5,8 @@ date: 2026-08-09
 language: en
 unlisted: true
 description: A test blog
+aliases:
+  - lucky/test/test.en
 tags:
   - AI-generated
   - Physics
@@ -72,6 +74,6 @@ Reposted: 360â€”Was Beethoven a Musician Who Celebrated the French Revolution? â
 
 Below is an example image:
 
-![Starry sky](./assets/1E63685F256BD04F18BFA98E961F30B4.png)
+![Starry sky](./TEST/assets/1E63685F256BD04F18BFA98E961F30B4.png)
 
 *Image: Where thought and space intersect*

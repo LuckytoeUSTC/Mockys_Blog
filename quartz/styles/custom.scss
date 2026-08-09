@@ -77,12 +77,6 @@ a.internal {
   border-radius: 0.28rem;
 }
 
-// Translations are alternate views of the Chinese article, not separate navigation entries.
-body[data-slug$=".en"] .breadcrumb-element:last-child,
-body[data-slug$=".en"] .breadcrumb-element:nth-last-child(2) > p {
-  display: none;
-}
-
 // Keep the article directory available without turning the left rail into a permanent file tree.
 @media all and (min-width: 801px) {
   .explorer {
