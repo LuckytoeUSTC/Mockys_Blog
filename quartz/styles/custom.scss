@@ -77,6 +77,17 @@ a.internal {
   border-radius: 0.28rem;
 }
 
+// Quartz currently localizes the TOC from the site-wide locale. English translations
+// use a slug suffix, so give their article directory an English label.
+body[data-slug$=".en"] .toc-header h3 {
+  font-size: 0;
+
+  &::after {
+    content: "Content";
+    font-size: 1rem;
+  }
+}
+
 // Keep the article directory available without turning the left rail into a permanent file tree.
 @media all and (min-width: 801px) {
   .explorer {
