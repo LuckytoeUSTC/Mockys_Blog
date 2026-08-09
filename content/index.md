@@ -7,7 +7,7 @@ author:
 language: zh-CN
 ---
 
-此地乃 Moe 与 Lucky 同植之 Digital Garden。
+此地乃 [[Moe/Moe|Moe]] 与 [[Lucky/Lucky|Lucky]] 同植之 Digital Garden。
 
 > [!note] 花园待办
 > - [ ] 一起写完首页介绍
