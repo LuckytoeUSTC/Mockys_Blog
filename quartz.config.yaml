@@ -144,14 +144,22 @@ plugins:
       priority: 20
   - source: "@quartz-community/graph"
     enabled: true
+    options:
+      localGraph:
+        depth: -1
+        showTags: true
+        removeTags:
+          - ""
+      globalGraph:
+        showTags: true
+        removeTags:
+          - ""
     layout:
       position: afterBody
       priority: 10
       condition: index-only
       group: home-bottom
       groupOptions:
-        grow: true
-        basis: 20rem
         align: stretch
   - source: "@quartz-community/search"
     enabled: true
@@ -249,8 +257,6 @@ plugins:
       condition: index-only
       group: home-bottom
       groupOptions:
-        grow: true
-        basis: 20rem
         align: stretch
   - source: "@quartz-community/spacer"
     enabled: true
@@ -310,8 +316,7 @@ layout:
       gap: 0.5rem
     home-bottom:
       priority: 5
-      direction: row
-      wrap: wrap
+      direction: column
       gap: 2rem
   byPageType:
     "404":
