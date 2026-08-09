@@ -192,6 +192,12 @@ plugins:
       position: left
       priority: 35
       group: toolbar
+  - source: "@mockys/language-switcher"
+    enabled: true
+    layout:
+      position: left
+      priority: 37
+      group: toolbar
   - source: "@mockys/reader-preferences"
     enabled: true
     layout:

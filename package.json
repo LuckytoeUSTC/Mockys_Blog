@@ -19,7 +19,7 @@
     "test": "tsx --test",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
-    "build-site-plugins": "esbuild site-plugins/reader-preferences/src/index.ts site-plugins/reader-preferences/src/components.tsx --outdir=site-plugins/reader-preferences/dist --format=esm --platform=node --jsx=automatic",
+    "build-site-plugins": "esbuild site-plugins/reader-preferences/src/index.ts site-plugins/reader-preferences/src/components.tsx --outdir=site-plugins/reader-preferences/dist --format=esm --platform=node --jsx=automatic && esbuild site-plugins/language-switcher/src/index.ts site-plugins/language-switcher/src/components.tsx --outdir=site-plugins/language-switcher/dist --format=esm --platform=node --jsx=automatic",
     "prebuild": "npm run build-site-plugins && npm run install-plugins"
   },
   "engines": {
@@ -38,6 +38,7 @@
     "quartz": "./quartz/bootstrap-cli.mjs"
   },
   "dependencies": {
+    "@mockys/language-switcher": "file:site-plugins/language-switcher",
     "@mockys/reader-preferences": "file:site-plugins/reader-preferences",
     "@clack/prompts": "^1.7.0",
     "@floating-ui/dom": "^1.7.4",

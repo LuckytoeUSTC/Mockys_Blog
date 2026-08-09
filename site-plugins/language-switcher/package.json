@@ -1,0 +1,35 @@
+{
+  "name": "@mockys/language-switcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./components": "./dist/components.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@quartz-community/utils": "^0.1.0"
+  },
+  "quartz": {
+    "name": "language-switcher",
+    "displayName": "Language Switcher",
+    "description": "Links paired Chinese and English versions of an article.",
+    "version": "1.0.0",
+    "category": [
+      "component"
+    ],
+    "components": {
+      "LanguageSwitcher": {
+        "name": "LanguageSwitcher",
+        "displayName": "Language Switcher",
+        "description": "Shows a compact switch when a paired translation exists.",
+        "version": "1.0.0",
+        "defaultPosition": "left",
+        "defaultPriority": 37
+      }
+    }
+  }
+}
