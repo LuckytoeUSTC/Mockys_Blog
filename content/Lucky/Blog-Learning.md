@@ -4,8 +4,6 @@ author: Lucky
 language: zh-CN
 date: 2026-08-09
 description: 收集值得学习的博客网站，记录它们在设计、组织方式和功能实验上的新东西
-aliases:
-  - lucky/blog-learning/index
 tags:
   - 数字花园
 ---

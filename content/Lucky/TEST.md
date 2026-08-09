@@ -4,8 +4,6 @@ author: Lucky
 date: 2026-08-05
 language: zh-CN
 description: A test blog
-aliases:
-  - lucky/test/index
 tags:
   - AI生成
   - 物理
@@ -19,7 +17,7 @@ tags:
 > - [x] 数学公式
 > - [x] 小宇宙播客嵌入
 > - [x] 图文展示
-> - [ ] 中英文切换
+> - [x] 中英文切换
 
 
 ## 一、 理科推导：相空间与能量表达

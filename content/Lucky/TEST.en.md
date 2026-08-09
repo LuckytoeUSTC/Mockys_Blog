@@ -20,7 +20,7 @@ This is a test blog featuring equations, images, and audio.
 > - [x] Mathematical equations
 > - [x] Xiaoyuzhou podcast embedding
 > - [x] Image-and-text display
-> - [ ] Switching between Chinese and English
+> - [x] Switching between Chinese and English
 
 
 ## I. Scientific Derivation: Phase Space and the Energy Expression
