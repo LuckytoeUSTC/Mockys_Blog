@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lucky Writing"
+  short_description: "Preserve Lucky's personal Chinese blog voice"
+  default_prompt: "Use $lucky-writing to edit this Lucky blog post without flattening its personal voice."

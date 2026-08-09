@@ -1,5 +1,6 @@
 ---
 title: The Why Question
+language: zh-CN
 date: 2026-08-08
 description: 为什么做这个博客：关于表达、共同生活，从消费走向生产的尝试，以及一份纲领
 tags:

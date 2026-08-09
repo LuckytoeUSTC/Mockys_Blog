@@ -2,110 +2,128 @@
 
 [![Site](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=site)](https://mockys.net) [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
 
-Moe 与 Lucky 共同维护的数字花园，记录数学、物理、人文、摄影、播客与仍在生长的问题。访问网站：[mockys.net](https://mockys.net)。
+Moe 与 Lucky 一起种植的 Digital Garden。网站在 [mockys.net](https://mockys.net)，文章和配置都保存在这个仓库中。
 
-## 网站如何运行
+## Quick Start：发一篇文章
 
-这是一个没有“内容管理后台”的静态网站。GitHub 仓库保存文章与配置，是网站内容的唯一来源；Cloudflare Pages 监听发布分支，每次收到新提交后运行 Quartz，把 Markdown 编译成网页并自动上线。
+### 1. 准备文件
 
-```mermaid
-flowchart LR
-    A["作者<br/>Markdown 与普通附件"] -->|"GitHub 网页端<br/>Upload files"| B["GitHub<br/>content/作者目录/"]
-    B -->|"提交到 v5"| C["Cloudflare Pages<br/>运行 Quartz v5 构建"]
-    C --> D["mockys.net<br/>公开网站"]
-    E["大文件<br/>无法压缩到 25 MiB 以下"] -->|"上传到图床"| F["Cloudflare R2"]
-    F -->|"assets.mockys.net 外链"| D
-```
+用 Typora、Obsidian 或其他编辑器写好 `.md` 文件。建议使用简短的英文文件名，单词之间用 `-` 连接，例如 `notes-on-light.md`。
 
-- **内容**：博文和普通附件位于 `content/`，按作者归档。
-- **发布**：`v5` 是当前默认及生产分支；直接提交后，Cloudflare Pages 自动构建和部署。
-- **普通附件**：与文章一起提交到作者目录下的 `assets/`，由 GitHub 跟踪并随 Pages 发布。
-- **大文件**：先压缩；仍然过大时交给 Lucky 上传 R2，文章只保存 `assets.mockys.net` 外链。
+文章开头加入以下属性：
 
-顶部的状态徽章各自回答一个问题：`site` 检测网站此刻能否访问；`Pages` 只读取最新提交中名为 `Cloudflare Pages` 的 Check Run，判断最新构建是否成功；`last commit` 显示远端 `v5` 最近一次提交的时间。Cloudflare Pages 负责构建，并通过 [Cloudflare Git 集成](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#check-runs)把结果写回 GitHub；Shields 再把这条结果绘制成徽章。详细构建日志仍以 Cloudflare Dashboard 为准。
-
-## 给合作者：用 GitHub 网页上传博文
-
-### 1. 确认文件放在哪里
-
-- Moe 的文章放入 [`content/Moe/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Moe)。
-- Lucky 的文章放入 [`content/Lucky/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Lucky)。
-- 共同写作、暂不区分作者或尚未归档的文章放入 [`content/Undetermined/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Undetermined)。
-
-日常投稿只改自己的作者目录，不要移动其他作者的文章。
-
-### 2. 准备 Markdown 文件
-
-在本地用 Typora 或其他编辑器写好 `.md` 文件。建议使用英文文件名，单词之间不要空格，例如 `notes-on-light.md`。
-
-文章开头保留以下 Frontmatter：
-
-```md
+```yaml
 ---
 title: 文章标题
-description: 一句话介绍这篇文章
-date: 2026-08-06
+author: Moe
+language: zh-CN
+description: 一句话说明这篇文章写了什么
+date: 2026-08-09
 tags:
   - 标签一
   - 标签二
 ---
 ```
 
-`title` 是网页标题，`description` 用于搜索结果和链接预览，`date` 使用 `YYYY-MM-DD` 格式。每个标签单独占一行；不需要标签时可以删掉整个 `tags` 部分。
+- `author` 填 `Moe` 或 `Lucky`；共同写作时写成 `[Moe, Lucky]`。
+- `language` 中文文章填 `zh-CN`，英文文章填 `en`。
+- `description` 和 `tags` 可以暂时不写，其余四项建议保留。
 
-### 3. 直接上传并发布
+### 2. 上传到 GitHub
 
-1. 打开上方对应的作者目录，确认左上方分支为 `v5`（默认）。
+1. 进入自己的目录：[`content/Moe/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Moe)、[`content/Lucky/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Lucky)，或暂存目录 [`content/Undetermined/`](https://github.com/LuckytoeUSTC/Mockys_Blog/tree/v5/content/Undetermined)。
+2. 确认分支是 `v5`，点击 **Add file → Upload files**。
+3. 直接上传 `.md`；若有普通图片或附件，把整理好的文件一起上传。
+4. 在 **Commit changes** 中写一句说明，例如 `post: add notes on light`，然后提交到 `v5`。
+5. 等待 Cloudflare Pages 构建完成，再到 [mockys.net](https://mockys.net) 检查文章。
 
-2. 点击 **Add file → Upload files**。
+日常投稿只改自己的作者目录，不移动他人的文章。遇到上传失败、单个文件超过 **25 MiB（约 25 MB）**，或构建报错时，请看后面的详细说明。
 
-3. 把写好的 `.md` 文件拖入上传区域；文章有图片或其它附件时，把附件拖入准备好的 `assets` 文件夹。
+## 图片、附件与 R2
 
-4. 检查页面列出的目标路径，确认所有文件都位于 `content/自己的名字/`。
+### 单个文件不超过 25 MiB（约 25 MB）：跟文章一起上传
 
-5. 在 **Commit changes** 中填写简短说明，例如 `post: add notes on light`。
-
-6. 选择直接提交到 `v5`，点击 **Commit changes**。
-
-7. 提交完成后，等待网页自动编译，通常几秒钟到一分钟，即可在 [mockys.net](https://mockys.net) 查看结果。也可以根据这个标签查看编译状况 >> ![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)<<（这个标签不会自动更新，要刷新页面才能获取最新结果)
-
-   | 标签          | 编译状态 | 你的反应          |
-   | ------------- | -------- | ----------------- |
-   | pending       | 正在编译 | 耐心等待          |
-   | passing       | 编译成功 | Hurrah!!          |
-   | no check runs | 状态未知 | 耐心等待失败      |
-   | failing       | 彻底失败 | 是时候呼叫Lucky啦 |
-
-8. 需要修改已有文章时，打开对应 `.md` 文件并点击右上角铅笔图标；也可以在本地修改后重新上传同名文件。
-
-### 4. 图片与附件
-
-普通图片或附件放在作者目录下的 `assets/` 文件夹。例如：
+单个文件不超过 **25 MiB（约 25 MB）** 时，可以跟文章一起上传。图片放入作者目录下的 `assets/文章文件名/`，避免不同文章出现同名文件：
 
 ```text
 content/
 └── Moe/
     ├── notes-on-light.md
     └── assets/
-        └── prism.jpg
+        └── notes-on-light/
+            └── prism.jpg
 ```
 
-文章中使用相对路径引用：
+文章中使用相对路径：
 
 ```md
-![棱镜实验](./assets/prism.jpg)
+![棱镜实验](./assets/notes-on-light/prism.jpg)
 ```
 
-> [!IMPORTANT]
-> **单个附件必须小于 25 MiB，并且不要卡着上限。** GitHub 网页上传和 Cloudflare Pages 的单个站点资源都以 25 MiB 为上限。图片、音频或视频请先压缩；如果无法压到限制以内，请把原文件交给 Lucky，由 Lucky 上传到 R2，再把 `https://assets.mockys.net/...` 链接发给你。
+### 单个文件超过 25 MiB（约 25 MB）：上传 R2
 
-大文件外链的写法：
+**通过 GitHub 与 Pages 发布的单个文件不得超过 25 MiB（约 25 MB）。** 超过时先尝试压缩；压缩后仍超过 25 MiB，就不要上传到仓库，改用 R2：
+
+1. 打开 [Cloudflare Dashboard](https://dash.cloudflare.com/)，进入 **R2 object storage**。
+2. 选择存储桶 **`mockys-blog`**，点击 **Upload**。
+3. 建议按 `作者/文章文件名/附件名` 组织，例如 `Moe/notes-on-light/demo.mp4`；文件名尽量使用英文、数字和 `-`。
+4. 上传完成后，公开链接就是资源域名加对象路径：`https://assets.mockys.net/Moe/notes-on-light/demo.mp4`。
+5. 先在浏览器中打开链接确认可访问，再放入文章。
 
 ```md
-[下载附件](https://assets.mockys.net/路径/文件名.pdf)
+[下载附件](https://assets.mockys.net/Moe/notes-on-light/demo.pdf)
 
-![图片说明](https://assets.mockys.net/路径/图片.jpg)
+![图片说明](https://assets.mockys.net/Moe/notes-on-light/image.jpg)
 ```
+
+## 构建失败：自己排查
+
+### 1. 先确认是哪次提交出错
+
+打开 [`v5` 提交记录](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)，找到自己刚提交的 commit。若 Pages 仍是 `pending`，先刷新并稍等；若是 `failing`，继续看 Cloudflare 日志。不要把其他人提交的失败误认成自己的。
+
+### 2. 看真正的构建日志
+
+进入 [Cloudflare Dashboard](https://dash.cloudflare.com/)：
+
+1. 打开 **Workers & Pages**。
+2. 选择 Pages 项目 **`mockys-blog`**。
+3. 进入 **Deployments**，找到失败的部署。
+4. 点击 **View details → Build log**。
+
+### 3. 让大模型帮忙，但只做最小修复
+
+把下面这些信息一起交给大模型：
+
+- 改过的文件；
+- Build log 中第一条 error 及其上下文（或者全文）；
+- 预期结果，例如“新增一篇 Markdown 文章”；
+- 约束：“先解释原因，再给最小修改；不要升级依赖，不要重构整个项目。”
+
+不要粘贴 Cloudflare 密钥、API Token、账号信息或其他秘密。
+
+如果只是 Frontmatter、Markdown 路径或拼写问题，可以在 GitHub 网页直接改正并提交。看不懂再呼叫 Lucky。
+
+## 写作与协作约定
+
+- 大模型可以校对、查错和帮忙梳理，但不能替作者抹平语气。最终文字要像 Moe 或 Lucky。
+- 标签用于连接已经存在的主题，不必为了显得完整而给每篇文章塞满分类。标签体系尚未定稿，拿不准时宁可少写。
+- 修改前先确认远端是否有新提交；尽量只动自己的目录。两个人同时改同一个文件时，先沟通再提交。
+
+## 网站如何运行
+
+这里没有内容管理后台。GitHub 保存文章与配置；Cloudflare Pages 监听 `v5` 分支，每次出现新提交便运行 Quartz，把 Markdown 编译成网页并发布。
+
+```mermaid
+flowchart LR
+    A["Moe / Lucky<br/>Markdown 与普通附件"] -->|"GitHub 网页上传<br/>提交到 v5"| B["GitHub 仓库<br/>content/作者目录/"]
+    B -->|"自动触发"| C["Cloudflare Pages<br/>Quartz 构建"]
+    C --> D["mockys.net<br/>公开网站"]
+    E["较大的图片、音频、视频或 PDF"] -->|"Cloudflare 网页上传"| F["R2 存储桶<br/>mockys-blog"]
+    F -->|"assets.mockys.net 外链"| D
+```
+
+三个徽章分别回答三个问题：`site` 检查网站此刻能否访问；`Pages` 显示 GitHub 收到的 Cloudflare Check Run；`last commit` 显示远端 `v5` 最近一次提交时间。徽章需要刷新页面才会更新，而且只能概括结果；具体错误始终以 Cloudflare 的 Build log 为准。
 
 ## 项目结构
 
@@ -121,18 +139,13 @@ quartz.config.default.yaml       Quartz 上游默认配置，不存放本站定�
 quartz/styles/custom.scss        全站色彩与排版定制
 siteMetadata.tsx                 百度站点验证等站点级 metadata
 site-plugins/reader-preferences/ Aa 阅读样式控件
-README.md                        架构、投稿说明与状态入口
+README.md                        Quick Start、架构与协作说明
 ```
 
-站点定制集中在以上文件中，除必要的 `custom.scss` 外，不直接修改 Quartz 框架源码。当前提供浅色/深色主题、专注阅读模式，以及字体和字号设置；中英双语内容与语言切换作为后期计划，待实际出现成对译文后再实施。
-
-## 文件大小依据
-
-- [GitHub：通过浏览器添加文件，每个文件上限为 25 MiB](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
-- [Cloudflare Pages：单个站点资源上限为 25 MiB，较大文件建议使用 R2](https://developers.cloudflare.com/pages/platform/limits/#file-size)
+本站定制集中在以上文件中，除必要的 `custom.scss` 外，不直接修改 Quartz 框架源码。当前提供浅色/深色主题、专注阅读模式，以及字体和字号设置。独立的 Quick Start 与完整 Documentation、多语言切换和标签体系仍是后续工程。
 
 <details>
-<summary>Developer入口</summary>
+<summary>维护者入口</summary>
 <ul>
 <li><a href="https://dash.cloudflare.com/">Cloudflare Dashboard</a></li>
 <li><a href="https://search.google.com/search-console">Google Search Console</a></li>
