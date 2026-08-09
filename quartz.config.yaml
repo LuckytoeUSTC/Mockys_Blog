@@ -147,13 +147,6 @@ plugins:
     options:
       localGraph:
         depth: -1
-        showTags: true
-        removeTags:
-          - ""
-      globalGraph:
-        showTags: true
-        removeTags:
-          - ""
     layout:
       position: afterBody
       priority: 10
