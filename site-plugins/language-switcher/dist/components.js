@@ -1,32 +1,39 @@
-import { jsx } from "preact/jsx-runtime";
+import { jsx, jsxs } from "preact/jsx-runtime";
 import { resolveRelative } from "@quartz-community/utils";
 const styles = `
-.page-header .flex-component:has(.language-switcher) > div:first-child {
-  min-width: 0;
-}
-
 .language-switcher {
   display: inline-flex;
   align-items: center;
-  min-height: 1.75rem;
   box-sizing: border-box;
-  margin-bottom: 0.2rem;
-  padding: 0.2rem 0.65rem;
+  gap: 0.2rem;
+  margin-top: 0.65rem;
+  padding: 0.2rem;
   border: 1px solid var(--lightgray);
   border-radius: 999px;
-  color: var(--secondary);
   background: transparent;
   font-size: 0.76rem;
   font-weight: 650;
   line-height: 1;
-  text-decoration: none;
-  white-space: nowrap;
 }
 
-.language-switcher:hover {
-  border-color: var(--secondary);
+.language-switcher-option {
+  min-width: 2.25rem;
+  box-sizing: border-box;
+  padding: 0.38rem 0.65rem;
+  border-radius: 999px;
+  color: var(--gray);
+  text-align: center;
+  text-decoration: none;
+}
+
+.language-switcher-option:hover {
   color: var(--dark);
   background: var(--highlight);
+}
+
+.language-switcher-option[aria-current="page"] {
+  color: var(--light);
+  background: var(--secondary);
 }
 `;
 const languageOf = (file) => {
@@ -51,22 +58,33 @@ const LanguageSwitcher = () => {
       (file) => translationKey(file) === currentKey && languageOf(file) !== currentLanguage
     );
     if (!currentLanguage || !alternate || languageOf(alternate) === currentLanguage) return null;
-    const alternateSlug = alternate.slug;
-    if (!alternateSlug) return null;
-    const href = resolveRelative(currentSlug, alternateSlug);
-    const chineseIsCurrent = currentLanguage === "zh";
-    const label = chineseIsCurrent ? "Read in English" : "\u9605\u8BFB\u4E2D\u6587\u7248";
-    return /* @__PURE__ */ jsx(
-      "a",
-      {
-        href,
-        class: `language-switcher ${displayClass ?? ""}`,
-        lang: chineseIsCurrent ? "en" : "zh-CN",
-        "aria-label": label,
-        title: label,
-        children: chineseIsCurrent ? "EN" : "\u4E2D\u6587"
-      }
-    );
+    const chineseFile = currentLanguage === "zh" ? current : alternate;
+    const englishFile = currentLanguage === "en" ? current : alternate;
+    if (!chineseFile.slug || !englishFile.slug) return null;
+    const chineseHref = resolveRelative(currentSlug, chineseFile.slug);
+    const englishHref = resolveRelative(currentSlug, englishFile.slug);
+    return /* @__PURE__ */ jsxs("nav", { class: `language-switcher ${displayClass ?? ""}`, "aria-label": "\u6587\u7AE0\u8BED\u8A00", children: [
+      /* @__PURE__ */ jsx(
+        "a",
+        {
+          href: chineseHref,
+          class: "language-switcher-option",
+          lang: "zh-CN",
+          "aria-current": currentLanguage === "zh" ? "page" : void 0,
+          children: "\u4E2D\u6587"
+        }
+      ),
+      /* @__PURE__ */ jsx(
+        "a",
+        {
+          href: englishHref,
+          class: "language-switcher-option",
+          lang: "en",
+          "aria-current": currentLanguage === "en" ? "page" : void 0,
+          children: "EN"
+        }
+      )
+    ] });
   };
   Component.css = styles;
   return Component;

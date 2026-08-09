@@ -141,22 +141,24 @@ plugins:
       useSavedState: true
     layout:
       position: left
-      priority: 40
-      group: toolbar
-      groupOptions:
-        shrink: false
+      priority: 20
   - source: "@quartz-community/graph"
-    enabled: false
+    enabled: true
     layout:
-      position: right
+      position: afterBody
       priority: 10
-      condition: not-index
+      condition: index-only
+      group: home-bottom
+      groupOptions:
+        grow: true
+        basis: 20rem
+        align: stretch
   - source: "@quartz-community/search"
     enabled: true
     layout:
-      position: left
-      priority: 20
-      group: toolbar
+      position: right
+      priority: 5
+      group: page-tools
       groupOptions:
         grow: true
   - source: "@quartz-community/backlinks"
@@ -194,30 +196,22 @@ plugins:
   - source: "@quartz-community/darkmode"
     enabled: true
     layout:
-      position: left
-      priority: 30
-      group: toolbar
+      position: right
+      priority: 10
+      group: page-tools
   - source: "@quartz-community/reader-mode"
-    enabled: true
-    layout:
-      position: left
-      priority: 35
-      group: toolbar
+    enabled: false
   - source: "@mockys/language-switcher"
     enabled: true
     layout:
       position: beforeBody
       priority: 15
-      group: article-heading
-      groupOptions:
-        shrink: false
-        align: end
   - source: "@mockys/reader-preferences"
     enabled: true
     layout:
-      position: left
-      priority: 38
-      group: toolbar
+      position: right
+      priority: 20
+      group: page-tools
   - source: "@quartz-community/breadcrumbs"
     enabled: true
     layout:
@@ -244,7 +238,7 @@ plugins:
   - source: "@quartz-community/recent-notes"
     enabled: true
     options:
-      title: 新近文章
+      title: 最近更新
       limit: 2
       showTags: true
       hideTagPages: true
@@ -253,6 +247,11 @@ plugins:
       position: afterBody
       priority: 5
       condition: index-only
+      group: home-bottom
+      groupOptions:
+        grow: true
+        basis: 20rem
+        align: stretch
   - source: "@quartz-community/spacer"
     enabled: true
     options: {}
@@ -309,6 +308,11 @@ layout:
       priority: 35
       direction: row
       gap: 0.5rem
+    home-bottom:
+      priority: 5
+      direction: row
+      wrap: wrap
+      gap: 2rem
   byPageType:
     "404":
       positions:

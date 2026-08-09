@@ -7,6 +7,23 @@ root.dataset.readerFont = ["sans", "serif"].includes(savedFont) ? savedFont : "s
 root.dataset.readerSize = ["small", "medium", "large"].includes(savedSize) ? savedSize : "medium"
 `;
 const afterDOMLoaded = `
+function setupExplorerPageState() {
+  const isDesktop = window.matchMedia("(min-width: 801px)").matches
+  const shouldOpen = isDesktop && document.body.dataset.slug === "index"
+
+  for (const explorer of document.querySelectorAll(".explorer")) {
+    explorer.classList.toggle("collapsed", !shouldOpen)
+    explorer.setAttribute("aria-expanded", String(shouldOpen))
+  }
+
+  if (!shouldOpen) document.documentElement.classList.remove("mobile-no-scroll")
+}
+
+function scheduleExplorerPageState() {
+  const timer = window.setTimeout(setupExplorerPageState, 0)
+  window.addCleanup(() => window.clearTimeout(timer))
+}
+
 function setupReaderPreferences() {
   const root = document.documentElement
   const containers = document.querySelectorAll(".reader-preferences")
@@ -75,6 +92,8 @@ function setupReaderPreferences() {
 
 document.addEventListener("nav", setupReaderPreferences)
 document.addEventListener("render", setupReaderPreferences)
+document.addEventListener("nav", scheduleExplorerPageState)
+document.addEventListener("render", scheduleExplorerPageState)
 `;
 const styles = `
 .reader-preferences {
