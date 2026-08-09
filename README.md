@@ -2,7 +2,7 @@
 
 [![Site](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=site)](https://mockys.net) [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
 
-Moe 与 Lucky 一起种植的 Digital Garden。网站在 [mockys.net](https://mockys.net)，文章和配置都保存在这个仓库中。了解网站运行方式请见[[#网站如何运行]]，本项目的结构请见[[#项目结构]]。
+Moe 与 Lucky 一起种植的 Digital Garden。网站在 [mockys.net](https://mockys.net)，文章和配置都保存在这个仓库中。了解网站运行方式请见下文“网站如何运行”，本项目的结构请见下文“项目结构”。
 
 ## Quick Start：发一篇文章
 
@@ -36,7 +36,7 @@ tags:
 2. 确认分支是 `v5`，点击 **Add file → Upload files**。
 3. 直接上传 `.md`；若有普通图片或附件，把整理好的文件一起上传。
 4. 在 **Commit changes** 中写一句说明，例如 `post: add notes on light`，然后提交到 `v5`。
-5. 通过这个标签 [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)查看Cloudflare Pages 构建状态，`pending`表示正在构建；`passing`表示构建成功，可以到 [mockys.net](https://mockys.net) 查看文章。若为`failing`或其它，请看后面的[[#报错说明]]。
+5. 通过这个标签 [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) 查看 Cloudflare Pages 构建状态。`pending` 表示正在构建；`passing` 表示构建成功，可以到 [mockys.net](https://mockys.net) 查看文章。若为 `failing` 或其他状态，请看下文“报错说明”。
 
 日常投稿只改自己的作者目录，不移动他人的文章。遇到上传失败、单个文件超过 **25 MiB（约 25 MB）**，或构建报错时，请看下面详细说明。
 
