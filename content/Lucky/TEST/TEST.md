@@ -71,6 +71,6 @@ $$
 
 以下是图片示例：
 
-![星空](content/Lucky/TEST/assets/1E63685F256BD04F18BFA98E961F30B4.png)
+![星空](./assets/1E63685F256BD04F18BFA98E961F30B4.png)
 
 *图：思想与空间的交汇处

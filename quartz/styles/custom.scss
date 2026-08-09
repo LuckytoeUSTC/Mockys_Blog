@@ -83,6 +83,61 @@ body[data-slug$=".en"] .breadcrumb-element:nth-last-child(2) > p {
   display: none;
 }
 
+// Keep the article directory available without turning the left rail into a permanent file tree.
+@media all and (min-width: 801px) {
+  .explorer {
+    position: relative;
+    min-height: 2rem;
+    overflow: visible;
+  }
+
+  .explorer button.desktop-explorer {
+    display: none;
+  }
+
+  .explorer button.mobile-explorer {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    border: 1px solid transparent;
+    border-radius: 0.4rem;
+  }
+
+  .explorer button.mobile-explorer .lucide-menu {
+    stroke: currentColor;
+  }
+
+  .explorer button.mobile-explorer:hover,
+  .explorer:not(.collapsed) button.mobile-explorer {
+    border-color: var(--lightgray);
+    background: var(--highlight);
+  }
+
+  .explorer.collapsed > .explorer-content {
+    display: none;
+  }
+
+  .explorer:not(.collapsed) > .explorer-content {
+    position: absolute;
+    z-index: 30;
+    top: calc(100% + 0.65rem);
+    right: 0;
+    width: 17rem;
+    max-height: min(70vh, 34rem);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.85rem;
+    border: 1px solid var(--lightgray);
+    border-radius: 0.6rem;
+    background: var(--light);
+    box-shadow: 0 14px 36px rgba(22, 28, 30, 0.14);
+  }
+}
+
 .sidebar {
   font-size: 0.95rem;
 }

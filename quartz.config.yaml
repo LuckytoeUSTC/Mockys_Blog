@@ -134,10 +134,17 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: false
+    enabled: true
+    options:
+      folderDefaultState: collapsed
+      folderClickBehavior: link
+      useSavedState: true
     layout:
       position: left
-      priority: 50
+      priority: 40
+      group: toolbar
+      groupOptions:
+        shrink: false
   - source: "@quartz-community/graph"
     enabled: true
     layout:
@@ -241,7 +248,7 @@ plugins:
       limit: 2
       showTags: true
       hideTagPages: true
-      hideFolderPages: true
+      hideFolderPages: false
     layout:
       position: afterBody
       priority: 5

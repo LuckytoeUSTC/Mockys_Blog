@@ -72,6 +72,6 @@ Reposted: 360â€”Was Beethoven a Musician Who Celebrated the French Revolution? â
 
 Below is an example image:
 
-![Starry sky](content/Lucky/TEST/assets/1E63685F256BD04F18BFA98E961F30B4.png)
+![Starry sky](./assets/1E63685F256BD04F18BFA98E961F30B4.png)
 
 *Image: Where thought and space intersect*
