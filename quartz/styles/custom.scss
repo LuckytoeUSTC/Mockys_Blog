@@ -77,6 +77,12 @@ a.internal {
   border-radius: 0.28rem;
 }
 
+// Translations are alternate views of the Chinese article, not separate navigation entries.
+body[data-slug$=".en"] .breadcrumb-element:last-child,
+body[data-slug$=".en"] .breadcrumb-element:nth-last-child(2) > p {
+  display: none;
+}
+
 .sidebar {
   font-size: 0.95rem;
 }

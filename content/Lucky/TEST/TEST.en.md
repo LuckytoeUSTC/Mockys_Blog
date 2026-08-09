@@ -3,6 +3,7 @@ title: A Test Blog Featuring Equations, Images, and Audio
 author: Lucky
 date: 2026-08-09
 language: en
+unlisted: true
 description: A test blog
 tags:
   - AI-generated

@@ -134,7 +134,7 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 50
@@ -163,6 +163,10 @@ plugins:
     layout:
       position: beforeBody
       priority: 10
+      group: article-heading
+      groupOptions:
+        grow: true
+        align: end
   - source: "@quartz-community/content-meta"
     enabled: true
     layout:
@@ -195,9 +199,12 @@ plugins:
   - source: "@mockys/language-switcher"
     enabled: true
     layout:
-      position: left
-      priority: 37
-      group: toolbar
+      position: beforeBody
+      priority: 15
+      group: article-heading
+      groupOptions:
+        shrink: false
+        align: end
   - source: "@mockys/reader-preferences"
     enabled: true
     layout:
@@ -286,6 +293,11 @@ plugins:
       display: all
 layout:
   groups:
+    article-heading:
+      priority: 10
+      direction: row
+      wrap: nowrap
+      gap: 0.65rem
     toolbar:
       priority: 35
       direction: row
