@@ -1,11 +1,11 @@
 ---
 title: The Why Question
-language: zh-CN
+author: Lucky
 date: 2026-08-08
+language: zh-CN
 description: 为什么做这个博客：关于表达、共同生活，从消费走向生产的尝试，以及一份纲领
 tags:
-  - "#Magic-Stone"
-author: Lucky
+  - Magic-Stone
 ---
 我一直想有一个自我表达的空间。或许是一个社团组织，或许是一本日记，或许是一段关系，或许是一个博客网站。自我表达，在我的生命中始终是令人兴奋的、舒畅的，甚至是必需的。（我后来才知道，这并不是对所有人都成立的一··种感受和生命经验；在这件事上，我无疑是幸运与自由的。）
 

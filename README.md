@@ -2,7 +2,7 @@
 
 [![Site](https://img.shields.io/website?url=https%3A%2F%2Fmockys.net&label=site)](https://mockys.net) [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) [![Last commit](https://img.shields.io/github/last-commit/LuckytoeUSTC/Mockys_Blog/v5)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)
 
-Moe 与 Lucky 一起种植的 Digital Garden。网站在 [mockys.net](https://mockys.net)，文章和配置都保存在这个仓库中。
+Moe 与 Lucky 一起种植的 Digital Garden。网站在 [mockys.net](https://mockys.net)，文章和配置都保存在这个仓库中。了解网站运行方式请见[[#网站如何运行]]，本项目的结构请见[[#项目结构]]。
 
 ## Quick Start：发一篇文章
 
@@ -27,6 +27,7 @@ tags:
 
 - `author` 填 `Moe` 或 `Lucky`；共同写作时写成 `[Moe, Lucky]`。
 - `language` 中文文章填 `zh-CN`，英文文章填 `en`。
+- `tags` 不能包含空格，如果用英文则单词之间用 `-` 连接。这个属性用于文章的主题分类。
 - `description` 和 `tags` 可以暂时不写，其余四项建议保留。
 
 ### 2. 上传到 GitHub
@@ -35,9 +36,9 @@ tags:
 2. 确认分支是 `v5`，点击 **Add file → Upload files**。
 3. 直接上传 `.md`；若有普通图片或附件，把整理好的文件一起上传。
 4. 在 **Commit changes** 中写一句说明，例如 `post: add notes on light`，然后提交到 `v5`。
-5. 等待 Cloudflare Pages 构建完成，再到 [mockys.net](https://mockys.net) 检查文章。
+5. 通过这个标签 [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/)查看Cloudflare Pages 构建状态，`pending`表示正在构建；`passing`表示构建成功，可以到 [mockys.net](https://mockys.net) 查看文章。若为`failing`或其它，请看后面的[[#报错说明]]。
 
-日常投稿只改自己的作者目录，不移动他人的文章。遇到上传失败、单个文件超过 **25 MiB（约 25 MB）**，或构建报错时，请看后面的详细说明。
+日常投稿只改自己的作者目录，不移动他人的文章。遇到上传失败、单个文件超过 **25 MiB（约 25 MB）**，或构建报错时，请看下面详细说明。
 
 ## 图片、附件与 R2
 
@@ -76,7 +77,7 @@ content/
 ![图片说明](https://assets.mockys.net/Moe/notes-on-light/image.jpg)
 ```
 
-## 构建失败：自己排查
+## 报错说明
 
 ### 1. 先确认是哪次提交出错
 
@@ -100,14 +101,14 @@ content/
 - 预期结果，例如“新增一篇 Markdown 文章”；
 - 约束：“先解释原因，再给最小修改；不要升级依赖，不要重构整个项目。”
 
-不要粘贴 Cloudflare 密钥、API Token、账号信息或其他秘密。
+不要粘贴 Cloudflare 密钥、API Token、账号信息或其他秘密信息。
 
-如果只是 Frontmatter、Markdown 路径或拼写问题，可以在 GitHub 网页直接改正并提交。看不懂再呼叫 Lucky。
+如果只是 Frontmatter、Markdown 路径或拼写问题，可以自己更改并提交。看不懂再呼叫 Lucky。
 
 ## 写作与协作约定
 
 - 大模型可以校对、查错和帮忙梳理，但不能替作者抹平语气。最终文字要像 Moe 或 Lucky。
-- 标签用于连接已经存在的主题，不必为了显得完整而给每篇文章塞满分类。标签体系尚未定稿，拿不准时宁可少写。
+- 标签用于连接文章的主题，标签体系尚未定稿，可以自由增添。
 - 修改前先确认远端是否有新提交；尽量只动自己的目录。两个人同时改同一个文件时，先沟通再提交。
 
 ## 网站如何运行
