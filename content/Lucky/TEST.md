@@ -8,7 +8,6 @@ tags:
   - garden-builder
   - physics
   - book-reviews
-  - podcasts
 ---
 这是一篇包含公式、图像与音频的试验Blog。
 

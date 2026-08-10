@@ -149,7 +149,7 @@ README.md                        Quick Start、架构与协作说明
 <ul>
 <li><a href="https://dash.cloudflare.com/">Cloudflare Dashboard</a></li>
 <li><a href="https://search.google.com/search-console">Google Search Console</a></li>
-<li><a href="https://ziyuan.baidu.com/dashboard/index?site=https://www.mockys.net/">百度搜索资源平台</a></li>
+<li><a href="https://ziyuan.baidu.com/dashboard/index?site=https://mockys.net/">百度搜索资源平台</a></li>
 <li><a href="https://quartz.jzhao.xyz/">Quartz 文档</a></li>
 </ul>
 </details>

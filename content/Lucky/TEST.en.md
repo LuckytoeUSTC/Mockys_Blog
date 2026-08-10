@@ -11,7 +11,6 @@ tags:
   - garden-builder
   - physics
   - book-reviews
-  - podcasts
 ---
 This is a test blog featuring equations, images, and audio.
 
