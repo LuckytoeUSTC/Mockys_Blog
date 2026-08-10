@@ -160,8 +160,9 @@ body[data-slug="index"] .center > article {
   max-width: 52rem;
 }
 
-// Folder pages read more cleanly as a simple date-and-title archive.
-body[data-slug$="/index"] .page-listing .section > .tags {
+// Folder and individual tag pages read more cleanly as simple date-and-title archives.
+body[data-slug$="/index"] .page-listing .section > .tags,
+body[data-slug^="tags/"]:not([data-slug="tags/index"]) .page-listing .section > .tags {
   display: none;
 }
 
