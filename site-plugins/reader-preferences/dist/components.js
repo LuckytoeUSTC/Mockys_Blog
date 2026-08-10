@@ -249,7 +249,7 @@ const ReaderPreferences = () => {
         /* @__PURE__ */ jsx("span", { class: "reader-preferences-label", children: "\u5B57\u4F53" }),
         /* @__PURE__ */ jsxs("div", { class: "reader-preferences-options", children: [
           /* @__PURE__ */ jsx("button", { type: "button", "data-reader-kind": "font", "data-reader-value": "sans", children: "\u65E0\u886C\u7EBF" }),
-          /* @__PURE__ */ jsx("button", { type: "button", "data-reader-kind": "font", "data-reader-value": "serif", children: "\u6977\u4F53" })
+          /* @__PURE__ */ jsx("button", { type: "button", "data-reader-kind": "font", "data-reader-value": "serif", children: "\u886C\u7EBF" })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { class: "reader-preferences-row", children: [

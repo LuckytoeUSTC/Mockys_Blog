@@ -255,7 +255,7 @@ export const ReaderPreferences: QuartzComponentConstructor = () => {
               无衬线
             </button>
             <button type="button" data-reader-kind="font" data-reader-value="serif">
-              楷体
+              衬线
             </button>
           </div>
         </div>
