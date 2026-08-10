@@ -5,7 +5,10 @@ export const SiteMetadata: QuartzTransformerPlugin = () => ({
   name: "MockysSiteMetadata",
   externalResources() {
     return {
-      additionalHead: [<meta name="baidu-site-verification" content="codeva-aiuaLYUSn0" />],
+      additionalHead: [
+        <meta name="baidu-site-verification" content="codeva-aiuaLYUSn0" />,
+        <meta name="baidu-site-verification" content="codeva-WCW5ibWvnN" />,
+      ],
     }
   },
 })
