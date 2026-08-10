@@ -1,9 +1,21 @@
 @use "./variables.scss" as *;
 
+@font-face {
+  font-family: "Mockys Songti";
+  src:
+    local("Songti SC Regular"),
+    local("Songti SC"),
+    local("STSong");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
   --mockys-sans:
     -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --mockys-serif: ui-serif, "Songti SC", STSong, "Noto Serif CJK SC", Georgia, serif;
+  --mockys-serif:
+    "Mockys Songti", "Songti SC", STSong, "Noto Serif CJK SC", "Source Han Serif SC", serif;
   --mockys-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --mockys-reader-font: var(--mockys-sans);
   --mockys-reader-size: 1.02rem;
