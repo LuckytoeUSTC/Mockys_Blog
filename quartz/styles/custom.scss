@@ -160,6 +160,11 @@ body[data-slug="index"] .center > article {
   max-width: 52rem;
 }
 
+// Folder pages read more cleanly as a simple date-and-title archive.
+body[data-slug$="/index"] .page-listing .section > .tags {
+  display: none;
+}
+
 body[data-slug="index"] .article-title {
   margin-top: 0;
   font-size: clamp(2rem, 4vw, 3rem);
