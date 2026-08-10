@@ -10,15 +10,15 @@ Moe 与 Lucky 一起种植的 Digital Garden。网站在 [mockys.net](https://mo
 
 用 Typora、Obsidian 或其他编辑器写好 `.md` 文件。建议使用简短的英文文件名，单词之间用 `-` 连接，例如 `notes-on-light.md`。
 
-文章开头加入以下属性：
+文章开头加入以下frontmatter：
 
 ```yaml
 ---
 title: 文章标题
 author: Moe
 language: zh-CN
-description: 一句话说明这篇文章写了什么
 date: 2026-08-09
+description: 一句话说明这篇文章写了什么
 tags:
   - 标签一
   - 标签二
@@ -27,7 +27,7 @@ tags:
 
 - `author` 填 `Moe` 或 `Lucky`；共同写作时写成 `[Moe, Lucky]`。
 - `language` 中文文章填 `zh-CN`，英文文章填 `en`。
-- `tags` 不能包含空格，如果用英文则单词之间用 `-` 连接。这个属性用于文章的主题分类。
+- `tags` 不能包含空格，最好填英文，单词之间用 `-` 连接。这个属性用于文章的主题分类。
 - `description` 和 `tags` 可以暂时不写，其余四项建议保留。
 
 ### 2. 上传到 GitHub
@@ -36,7 +36,7 @@ tags:
 2. 确认分支是 `v5`，点击 **Add file → Upload files**。
 3. 直接上传 `.md`；若有普通图片或附件，把整理好的文件一起上传。
 4. 在 **Commit changes** 中写一句说明，例如 `post: add notes on light`，然后提交到 `v5`。
-5. 通过这个标签 [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) 查看 Cloudflare Pages 构建状态。`pending` 表示正在构建；`passing` 表示构建成功，可以到 [mockys.net](https://mockys.net) 查看文章。若为 `failing` 或其他状态，请看下文“报错说明”。
+5. 通过这个标签 [![Cloudflare Pages](https://img.shields.io/github/check-runs/LuckytoeUSTC/Mockys_Blog/v5?nameFilter=Cloudflare%20Pages&label=Pages)](https://github.com/LuckytoeUSTC/Mockys_Blog/commits/v5/) （需刷新页面才会更新）查看 Cloudflare Pages 构建状态。`pending` 表示正在构建；`passing` 表示构建成功，可以到 [mockys.net](https://mockys.net) 查看文章。若为 `failing` 或其他状态，请看下文“报错说明”。
 
 日常投稿只改自己的作者目录，不移动他人的文章。遇到上传失败、单个文件超过 **25 MiB（约 25 MB）**，或构建报错时，请看下面详细说明。
 
@@ -44,21 +44,20 @@ tags:
 
 ### 单个文件不超过 25 MiB（约 25 MB）：跟文章一起上传
 
-单个文件不超过 **25 MiB（约 25 MB）** 时，可以跟文章一起上传。图片放入作者目录下的 `assets/文章文件名/`，避免不同文章出现同名文件：
+单个文件不超过 **25 MiB（约 25 MB）** 时，可以跟文章一起上传。图片放入作者目录下的 `assets/`，避免不同文章出现同名文件：
 
 ```text
 content/
 └── Moe/
     ├── notes-on-light.md
     └── assets/
-        └── notes-on-light/
-            └── prism.jpg
+        └── prism.jpg
 ```
 
 文章中使用相对路径：
 
 ```md
-![棱镜实验](./assets/notes-on-light/prism.jpg)
+![棱镜实验](./assets/prism.jpg)
 ```
 
 ### 单个文件超过 25 MiB（约 25 MB）：上传 R2
@@ -68,7 +67,7 @@ content/
 1. 打开 [Cloudflare Dashboard](https://dash.cloudflare.com/)，进入 **R2 object storage**。
 2. 选择存储桶 **`mockys-blog`**，点击 **Upload**。
 3. 建议按 `作者/文章文件名/附件名` 组织，例如 `Moe/notes-on-light/demo.mp4`；文件名尽量使用英文、数字和 `-`。
-4. 上传完成后，公开链接就是资源域名加对象路径：`https://assets.mockys.net/Moe/notes-on-light/demo.mp4`。
+4. 上传完成后，公开链接就是资源域名`assets.mockys.net`加对象路径：`https://assets.mockys.net/Moe/notes-on-light/demo.mp4`。
 5. 先在浏览器中打开链接确认可访问，再放入文章。
 
 ```md

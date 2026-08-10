@@ -5,7 +5,7 @@ language: zh-CN
 date: 2026-08-09
 description: 收集值得学习的博客网站，记录它们在设计、组织方式和功能实验上的新东西
 tags:
-  - 数字花园
+  - garden-builder
 ---
 收集让人耳目一新的博客，无论依据形式还是内容。
 

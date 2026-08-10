@@ -8,10 +8,10 @@ description: A test blog
 aliases:
   - lucky/test/test.en
 tags:
-  - AI-generated
-  - Physics
-  - Book-Reviews
-  - Podcasts
+  - garden-builder
+  - physics
+  - book-reviews
+  - podcasts
 ---
 This is a test blog featuring equations, images, and audio.
 

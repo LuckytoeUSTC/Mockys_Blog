@@ -5,10 +5,10 @@ date: 2026-08-05
 language: zh-CN
 description: A test blog
 tags:
-  - AI生成
-  - 物理
-  - 书评
-  - 播客
+  - garden-builder
+  - physics
+  - book-reviews
+  - podcasts
 ---
 这是一篇包含公式、图像与音频的试验Blog。
 
