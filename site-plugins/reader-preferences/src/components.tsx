@@ -22,8 +22,26 @@ function setupExplorerPageState() {
 }
 
 function scheduleExplorerPageState() {
+  const observers = []
+
+  for (const explorer of document.querySelectorAll(".explorer")) {
+    const list = explorer.querySelector(".explorer-ul")
+    if (!list) continue
+
+    const observer = new MutationObserver(() => {
+      if (!list.querySelector("li:not(.overflow-end)")) return
+      setupExplorerPageState()
+      observer.disconnect()
+    })
+    observer.observe(list, { childList: true })
+    observers.push(observer)
+  }
+
   const timer = window.setTimeout(setupExplorerPageState, 0)
-  window.addCleanup(() => window.clearTimeout(timer))
+  window.addCleanup(() => {
+    window.clearTimeout(timer)
+    for (const observer of observers) observer.disconnect()
+  })
 }
 
 function setupReaderPreferences() {
@@ -199,9 +217,10 @@ const styles = `
 
 @media (max-width: 800px) {
   .reader-preferences-panel {
-    position: fixed;
-    top: 4.5rem;
-    right: 1rem;
+    top: auto;
+    right: 0;
+    bottom: calc(100% + 0.65rem);
+    width: min(13rem, calc(100vw - 2rem));
   }
 }
 `

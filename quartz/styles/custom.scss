@@ -37,14 +37,14 @@ body {
   letter-spacing: -0.025em;
 }
 
-.center > article {
+.center article {
   max-width: 48rem;
   margin-inline: auto;
   font-family: var(--mockys-reader-font);
   font-size: var(--mockys-reader-size);
 }
 
-.center > article :where(p, li, blockquote) {
+.center article :where(p, li, blockquote) {
   line-height: var(--mockys-reader-leading);
 }
 
