@@ -2,12 +2,13 @@
 
 :root {
   --mockys-sans:
-    system-ui, "Segoe UI", "Noto Sans CJK SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
-  --mockys-serif: "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mockys-serif: ui-serif, "Songti SC", STSong, "Noto Serif CJK SC", Georgia, serif;
   --mockys-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --mockys-reader-font: var(--mockys-sans);
   --mockys-reader-size: 1.02rem;
   --mockys-reader-leading: 1.82;
+  --mockys-reader-tracking: 0.006em;
 
   --headerFont: var(--mockys-sans);
   --bodyFont: var(--mockys-sans);
@@ -16,6 +17,7 @@
 
 :root[data-reader-font="serif"] {
   --mockys-reader-font: var(--mockys-serif);
+  --mockys-reader-tracking: 0.035em;
 }
 
 :root[data-reader-size="small"] {
@@ -42,6 +44,8 @@ body {
   margin-inline: auto;
   font-family: var(--mockys-reader-font);
   font-size: var(--mockys-reader-size);
+  font-weight: 400;
+  letter-spacing: var(--mockys-reader-tracking);
 }
 
 .center article :where(p, li, blockquote) {

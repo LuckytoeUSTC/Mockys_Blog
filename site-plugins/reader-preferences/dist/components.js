@@ -201,6 +201,15 @@ const styles = `
   cursor: pointer;
 }
 
+.reader-preferences-options button[data-reader-value="sans"] {
+  font-family: var(--mockys-sans);
+}
+
+.reader-preferences-options button[data-reader-value="serif"] {
+  font-family: var(--mockys-serif);
+  font-size: 0.82rem;
+}
+
 .reader-preferences-options button:hover {
   border-color: var(--gray);
   color: var(--dark);
