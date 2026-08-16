@@ -4,8 +4,9 @@ author: Moe
 language: zh-CN
 date: 2026-08-16
 description: quick start
-
-
+tags:
+  - garden-builder
+  - Lady2
 ---
 
 这是一个让Moe知道md.应该上传到哪里的test
