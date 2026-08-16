@@ -116,7 +116,7 @@ content/
 
 ```mermaid
 flowchart LR
-    A["Moe / Lucky<br/>Markdown 与普通附件"] -->|"GitHub 网页上传<br/>提交到 v5"| B["GitHub 仓库<br/>content/作者目录/"]
+    A["Moe / Lucky<br/>Markdown 与普通附件"] -->|"上传GitHub<br/>提交到 v5"| B["GitHub 仓库<br/>content/作者目录/"]
     B -->|"自动触发"| C["Cloudflare Pages<br/>Quartz 构建"]
     C --> D["mockys.net<br/>公开网站"]
     E["较大的图片、音频、视频或 PDF"] -->|"Cloudflare 网页上传"| F["R2 存储桶<br/>mockys-blog"]
