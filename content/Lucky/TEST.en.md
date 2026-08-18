@@ -8,7 +8,7 @@ description: A test blog
 aliases:
   - lucky/test/test.en
 tags:
-  - garden-builder
+  - taster
   - physics
   - book-reviews
 ---
