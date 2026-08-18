@@ -9,8 +9,6 @@ aliases:
   - lucky/test/test.en
 tags:
   - taster
-  - physics
-  - book-reviews
 ---
 This is a test blog featuring equations, images, and audio.
 
