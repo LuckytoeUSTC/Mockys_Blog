@@ -9,6 +9,7 @@ aliases:
   - lucky/test/test.en
 tags:
   - taster
+  - "#luckytoe"
 ---
 This is a test blog featuring equations, images, and audio.
 
