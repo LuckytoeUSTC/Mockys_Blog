@@ -15,5 +15,5 @@ btw,配置一个obsidian似乎更合适（在看到Lucky直接在网站上新建
 
 (撸袖子)我要学技术（咕咕咕）
 
-配置Obsidian。
+配置Obsidian
 
