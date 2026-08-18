@@ -11,7 +11,7 @@ description: Lucky 个人文章入口
 ## A Note of Tags
 
 - #lucky : About me connecting with people
-- #luckytoe: About my self-reflection
+- #luckytoe: My self-reflection
 - #luckytoehep : About math and physics and more
 - #liqi : About being an active researcher
 - #alberich : To be explore
