@@ -8,9 +8,8 @@ description: A test blog
 aliases:
   - lucky/test/test.en
 tags:
-  - garden-builder
-  - physics
-  - book-reviews
+  - taster
+  - "#luckytoe"
 ---
 This is a test blog featuring equations, images, and audio.
 

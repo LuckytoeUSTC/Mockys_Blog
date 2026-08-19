@@ -5,9 +5,8 @@ date: 2026-08-05
 language: zh-CN
 description: A test blog
 tags:
-  - garden-builder
-  - physics
-  - book-reviews
+  - taster
+  - "#luckytoe"
 ---
 这是一篇包含公式、图像与音频的试验Blog。
 

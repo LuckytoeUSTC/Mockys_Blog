@@ -5,7 +5,7 @@ language: zh-CN
 date: 2026-08-16
 description: quick start
 tags:
-  - garden-builder
+  - taster
   - Lady2
 ---
 
