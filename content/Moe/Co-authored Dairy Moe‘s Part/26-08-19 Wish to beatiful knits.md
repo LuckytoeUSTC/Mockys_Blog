@@ -1,7 +1,7 @@
 ---
 title: 乞巧节
 author: Moe
-discribtion:初学钩织
+discription: 初学钩织
 tags:
   - Lady2
   - Tian

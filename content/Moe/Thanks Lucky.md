@@ -1,7 +1,7 @@
 ---
 title: 配置大作战观后感
 author: Moe
-discribtion:
+discription:
 tags:
   - Lady2
   - Moe

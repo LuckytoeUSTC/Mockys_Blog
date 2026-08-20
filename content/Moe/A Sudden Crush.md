@@ -1,7 +1,7 @@
 ---
 title: 潮水忽退
 author: Moe
-discribtion:
+discription:
 tags:
   - Lady2
   - Moe
