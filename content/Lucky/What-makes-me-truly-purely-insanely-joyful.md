@@ -7,11 +7,12 @@ description:
 tags:
   - dasein
 ---
+1. 练习钢琴（Alone）
+2. 听某些音乐（Alone）
+3. 
 
 
 
 
 
-
-
-
+苦乐同时产生，均值为负且稳定
