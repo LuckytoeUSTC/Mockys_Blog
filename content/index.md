@@ -16,7 +16,6 @@ language: zh-CN
 
 > [!note] 提示词（?）
 > - **联萌日记（Co-authored diary）**:How's your day (今天发生的事情，现在能想起来的感受)
-
 > - **乍现灵光（Hit from everywhere）**: (想法，啥样都行)
 > - ****
 
