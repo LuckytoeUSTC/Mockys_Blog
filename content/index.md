@@ -19,6 +19,10 @@ language: zh-CN
 > - [ ] **乍现灵光（Hit from everywhere）**: (想法，啥样都行)
 > - [ ] ****
 
+> [!Notes] 提醒
+> 提醒Moe修改文章的日期标签
+
+
 ## 首页介绍
 
 
@@ -34,4 +38,4 @@ language: zh-CN
 #co-authored-dairy 联萌日记的标签
 
 ## 关于双语切换
->>>>>>> origin/v5
+
