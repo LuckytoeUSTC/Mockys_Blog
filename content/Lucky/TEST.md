@@ -6,7 +6,7 @@ language: zh-CN
 description: A test blog
 tags:
   - taster
-  - "#luckytoe"
+  - luckytoe
 ---
 这是一篇包含公式、图像与音频的试验Blog。
 
