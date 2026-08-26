@@ -20,3 +20,7 @@ btw,配置一个obsidian似乎更合适（在看到Lucky直接在网站上新建
 $$
 \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
 $$
+
+
+
+超级喜欢Lucky^ε^
