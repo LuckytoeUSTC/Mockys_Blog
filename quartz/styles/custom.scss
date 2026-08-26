@@ -137,6 +137,7 @@ body[data-slug$=".en"] .toc-header h3 {
     right: 0;
     width: 17rem;
     max-height: min(70vh, 34rem);
+    overflow-y: auto;
     box-sizing: border-box;
     margin: 0;
     padding: 0.85rem;
