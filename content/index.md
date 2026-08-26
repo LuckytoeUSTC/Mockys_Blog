@@ -33,7 +33,8 @@ language: zh-CN
 
 ### 标签
 
-#taster 作为Global标签，标记那些用于网站建设的文章。有些是测试页面，有些是网站philosophy的解读。
+#taster 作为Global标签，标记那些用于网站建设的文章。有些是测试页面，有些是网站philosophy的解读
+
 #co-authored-dairy 联萌日记的标签
 
 ## 关于双语切换
