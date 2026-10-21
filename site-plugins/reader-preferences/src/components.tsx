@@ -9,6 +9,68 @@ root.dataset.readerSize = ["small", "medium", "large"].includes(savedSize) ? sav
 `
 
 const afterDOMLoaded = `
+// Keep the media object outside the swapped SPA document body.
+const ambience = window.__mockysAmbience ??= (() => {
+  const audio = new Audio("https://assets.mockys.net/WhatSilenceSoundLike/full.flac")
+  audio.loop = true
+  audio.preload = "none"
+  let requested = false
+  let playing = false
+  let failed = false
+  let enabled = true
+  try { enabled = localStorage.getItem("mockys-ambience") !== "off" } catch {}
+  const refresh = () => {
+    for (const button of document.querySelectorAll(".ambience-toggle")) {
+      const label = failed ? "音频加载失败，点击重试" : requested ? "暂停声之无" : "播放声之无"
+      button.dataset.playing = String(playing)
+      button.setAttribute("aria-pressed", String(requested))
+      button.setAttribute("aria-label", label)
+      button.title = label
+    }
+  }
+  const start = () => {
+    failed = false
+    requested = true
+    refresh()
+    audio.play().catch((error) => {
+      if (!requested || error.name === "AbortError") return
+      requested = false
+      playing = false
+      failed = error.name !== "NotAllowedError"
+      refresh()
+    })
+  }
+  audio.addEventListener("playing", () => { playing = true; refresh() })
+  audio.addEventListener("waiting", () => { playing = false; refresh() })
+  audio.addEventListener("pause", () => { requested = false; playing = false; refresh() })
+  audio.addEventListener("error", () => { failed = true; requested = false; playing = false; refresh() })
+  const toggle = () => {
+    enabled = !requested
+    try { localStorage.setItem("mockys-ambience", enabled ? "on" : "off") } catch {}
+    if (enabled) {
+      if (audio.error) audio.load()
+      start()
+    } else audio.pause()
+  }
+  return { audio, refresh, toggle, start, enabled }
+})()
+
+function setupAmbience() {
+  for (const button of document.querySelectorAll(".ambience-toggle")) {
+    if (button.dataset.bound === "true") continue
+    button.dataset.bound = "true"
+    button.addEventListener("click", ambience.toggle)
+    window.addCleanup(() => button.removeEventListener("click", ambience.toggle))
+  }
+  ambience.refresh()
+  if (!ambience.attempted) {
+    ambience.attempted = true
+    if (ambience.enabled) ambience.start()
+  }
+}
+document.addEventListener("nav", setupAmbience)
+document.addEventListener("render", setupAmbience)
+
 function setupExplorerPageState() {
   const isDesktop = window.matchMedia("(min-width: 801px)").matches
   const shouldOpen = isDesktop && document.body.dataset.slug === "index"
@@ -52,7 +114,7 @@ function setupReaderPreferences() {
     if (container.dataset.bound === "true") continue
     container.dataset.bound = "true"
 
-    const toggle = container.querySelector(".reader-preferences-toggle")
+    const toggle = container.querySelector(".reader-preferences-font-toggle")
     const panel = container.querySelector(".reader-preferences-panel")
     const buttons = container.querySelectorAll("button[data-reader-value]")
     if (!toggle || !panel) continue
@@ -117,8 +179,30 @@ document.addEventListener("render", scheduleExplorerPageState)
 `
 
 const styles = `
+.ambience-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ambience-toggle svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+.ambience-toggle[data-playing="true"] svg {
+  animation: ambience-spin 10s linear infinite;
+}
+@keyframes ambience-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambience-toggle[data-playing="true"] svg { animation: none; }
+}
 .reader-preferences {
   position: relative;
+  gap: 0.5rem;
   display: flex;
   align-items: center;
 }
@@ -239,7 +323,26 @@ export const ReaderPreferences: QuartzComponentConstructor = () => {
     <div class={`reader-preferences ${displayClass ?? ""}`}>
       <button
         type="button"
-        class="reader-preferences-toggle"
+        class="reader-preferences-toggle ambience-toggle"
+        aria-label="播放声之无"
+        aria-pressed="false"
+        title="播放声之无"
+      >
+        <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <path
+            d="M12 25V8l16-3v17M12 12l16-3"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <ellipse cx="8" cy="25" rx="5" ry="3.5" fill="currentColor" />
+          <ellipse cx="24" cy="22" rx="5" ry="3.5" fill="currentColor" />
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="reader-preferences-toggle reader-preferences-font-toggle"
         aria-label="调整阅读样式"
         aria-expanded="false"
         title="阅读样式"

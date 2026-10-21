@@ -7,6 +7,68 @@ root.dataset.readerFont = ["sans", "serif"].includes(savedFont) ? savedFont : "s
 root.dataset.readerSize = ["small", "medium", "large"].includes(savedSize) ? savedSize : "medium"
 `;
 const afterDOMLoaded = `
+// Keep the media object outside the swapped SPA document body.
+const ambience = window.__mockysAmbience ??= (() => {
+  const audio = new Audio("https://assets.mockys.net/WhatSilenceSoundLike/full.flac")
+  audio.loop = true
+  audio.preload = "none"
+  let requested = false
+  let playing = false
+  let failed = false
+  let enabled = true
+  try { enabled = localStorage.getItem("mockys-ambience") !== "off" } catch {}
+  const refresh = () => {
+    for (const button of document.querySelectorAll(".ambience-toggle")) {
+      const label = failed ? "\u97F3\u9891\u52A0\u8F7D\u5931\u8D25\uFF0C\u70B9\u51FB\u91CD\u8BD5" : requested ? "\u6682\u505C\u58F0\u4E4B\u65E0" : "\u64AD\u653E\u58F0\u4E4B\u65E0"
+      button.dataset.playing = String(playing)
+      button.setAttribute("aria-pressed", String(requested))
+      button.setAttribute("aria-label", label)
+      button.title = label
+    }
+  }
+  const start = () => {
+    failed = false
+    requested = true
+    refresh()
+    audio.play().catch((error) => {
+      if (!requested || error.name === "AbortError") return
+      requested = false
+      playing = false
+      failed = error.name !== "NotAllowedError"
+      refresh()
+    })
+  }
+  audio.addEventListener("playing", () => { playing = true; refresh() })
+  audio.addEventListener("waiting", () => { playing = false; refresh() })
+  audio.addEventListener("pause", () => { requested = false; playing = false; refresh() })
+  audio.addEventListener("error", () => { failed = true; requested = false; playing = false; refresh() })
+  const toggle = () => {
+    enabled = !requested
+    try { localStorage.setItem("mockys-ambience", enabled ? "on" : "off") } catch {}
+    if (enabled) {
+      if (audio.error) audio.load()
+      start()
+    } else audio.pause()
+  }
+  return { audio, refresh, toggle, start, enabled }
+})()
+
+function setupAmbience() {
+  for (const button of document.querySelectorAll(".ambience-toggle")) {
+    if (button.dataset.bound === "true") continue
+    button.dataset.bound = "true"
+    button.addEventListener("click", ambience.toggle)
+    window.addCleanup(() => button.removeEventListener("click", ambience.toggle))
+  }
+  ambience.refresh()
+  if (!ambience.attempted) {
+    ambience.attempted = true
+    if (ambience.enabled) ambience.start()
+  }
+}
+document.addEventListener("nav", setupAmbience)
+document.addEventListener("render", setupAmbience)
+
 function setupExplorerPageState() {
   const isDesktop = window.matchMedia("(min-width: 801px)").matches
   const shouldOpen = isDesktop && document.body.dataset.slug === "index"
@@ -50,7 +112,7 @@ function setupReaderPreferences() {
     if (container.dataset.bound === "true") continue
     container.dataset.bound = "true"
 
-    const toggle = container.querySelector(".reader-preferences-toggle")
+    const toggle = container.querySelector(".reader-preferences-font-toggle")
     const panel = container.querySelector(".reader-preferences-panel")
     const buttons = container.querySelectorAll("button[data-reader-value]")
     if (!toggle || !panel) continue
@@ -114,8 +176,30 @@ document.addEventListener("nav", scheduleExplorerPageState)
 document.addEventListener("render", scheduleExplorerPageState)
 `;
 const styles = `
+.ambience-toggle {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.ambience-toggle svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+.ambience-toggle[data-playing="true"] svg {
+  animation: ambience-spin 10s linear infinite;
+}
+@keyframes ambience-spin {
+  to { transform: rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ambience-toggle[data-playing="true"] svg { animation: none; }
+}
 .reader-preferences {
   position: relative;
+  gap: 0.5rem;
   display: flex;
   align-items: center;
 }
@@ -236,7 +320,31 @@ const ReaderPreferences = () => {
       "button",
       {
         type: "button",
-        class: "reader-preferences-toggle",
+        class: "reader-preferences-toggle ambience-toggle",
+        "aria-label": "\u64AD\u653E\u58F0\u4E4B\u65E0",
+        "aria-pressed": "false",
+        title: "\u64AD\u653E\u58F0\u4E4B\u65E0",
+        children: /* @__PURE__ */ jsxs("svg", { viewBox: "0 0 32 32", fill: "none", "aria-hidden": "true", children: [
+          /* @__PURE__ */ jsx(
+            "path",
+            {
+              d: "M12 25V8l16-3v17M12 12l16-3",
+              stroke: "currentColor",
+              "stroke-width": "2.2",
+              "stroke-linecap": "round",
+              "stroke-linejoin": "round"
+            }
+          ),
+          /* @__PURE__ */ jsx("ellipse", { cx: "8", cy: "25", rx: "5", ry: "3.5", fill: "currentColor" }),
+          /* @__PURE__ */ jsx("ellipse", { cx: "24", cy: "22", rx: "5", ry: "3.5", fill: "currentColor" })
+        ] })
+      }
+    ),
+    /* @__PURE__ */ jsx(
+      "button",
+      {
+        type: "button",
+        class: "reader-preferences-toggle reader-preferences-font-toggle",
         "aria-label": "\u8C03\u6574\u9605\u8BFB\u6837\u5F0F",
         "aria-expanded": "false",
         title: "\u9605\u8BFB\u6837\u5F0F",
