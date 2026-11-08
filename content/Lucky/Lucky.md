@@ -8,6 +8,8 @@ description: Lucky 个人文章入口
 
 这是 Lucky 的地。
 
+我的[个人学术主页](https://luckytoeustc.github.io/)介绍了我的研究兴趣、研究经历、教育背景和教学经历。
+
 ## A Note of Tags
 	
 - 数-理
